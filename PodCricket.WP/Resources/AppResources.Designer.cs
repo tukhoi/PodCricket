@@ -340,7 +340,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to prevent screen turned off while playing post.
+        ///   Looks up a localized string similar to prevent screen turned off while playing post, this feature just turned on while you are listening.
         /// </summary>
         public static string ConfKeepScreenOnDetails {
             get {

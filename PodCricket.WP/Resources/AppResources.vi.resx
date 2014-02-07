@@ -211,7 +211,7 @@
     <value>giữ màn hình bật</value>
   </data>
   <data name="ConfKeepScreenOnDetails" xml:space="preserve">
-    <value>giữ màn hình luôn bật khi nghe bài</value>
+    <value>giữ màn hình luôn bật khi nghe bài, tính năng này chỉ bật khi bạn đang nghe</value>
   </data>
   <data name="ConfPlayPostInApDetails" xml:space="preserve">
     <value>nghe bài trong ứng dụng hay bằng chương trình mặc định của điện thoại</value>

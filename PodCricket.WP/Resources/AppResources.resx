@@ -375,7 +375,7 @@
     <value>keep screen on</value>
   </data>
   <data name="ConfKeepScreenOnDetails" xml:space="preserve">
-    <value>prevent screen turned off while playing post</value>
+    <value>prevent screen turned off while playing post, this feature just turned on while you are listening</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
     <value>updated on Feb 12 2014</value>

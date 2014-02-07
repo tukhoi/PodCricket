@@ -375,7 +375,7 @@
     <value>giữ màn hình bật</value>
   </data>
   <data name="ConfKeepScreenOnDetails" xml:space="preserve">
-    <value>giữ màn hình luôn bật khi nghe bài</value>
+    <value>giữ màn hình luôn bật khi nghe bài, tính năng này chỉ bật khi bạn đang nghe</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
     <value>cập nhật ngày 12/02/2014</value>
