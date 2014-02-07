@@ -23,13 +23,13 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="PODCRICKET" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="configuration" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.ConfigurationPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" Margin="12,0,12,0">
             <StackPanel x:Name="ContentPanel">
-                <toolkit:ToggleSwitch Header="Show as grid" x:Name="chkSubscribedPodsAsGrid" Tap="chkSubscribedPodsAsGrid_Tap">
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfShowAsGrid, Source={StaticResource LocalizedStrings}}" x:Name="chkSubscribedPodsAsGrid" Tap="chkSubscribedPodsAsGrid_Tap">
                     <toolkit:ToggleSwitch.HeaderTemplate>
                         <DataTemplate>
                             <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
@@ -41,31 +41,13 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Show subscribed podcasts as grid or list view" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </toolkit:ToggleSwitch.ContentTemplate>
-                </toolkit:ToggleSwitch>
-                
-                <toolkit:ToggleSwitch Header="Auto queue post" x:Name="chkQueueAfterDownload" Tap="chkQueueAfterDownload_Tap">
-                    <toolkit:ToggleSwitch.HeaderTemplate>
-                        <DataTemplate>
-                            <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
-                                            Foreground="{StaticResource PhoneForegroundBrush}" 
-                                            Content="{Binding}"/>
-                        </DataTemplate>
-                    </toolkit:ToggleSwitch.HeaderTemplate>
-                    <toolkit:ToggleSwitch.ContentTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Auto queue downloaded post to playlist after downloading" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfShowAsGridDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:ToggleSwitch.ContentTemplate>
                 </toolkit:ToggleSwitch>
 
-                <toolkit:ToggleSwitch Header="Play post in app" x:Name="chkPlayStreamInApp" Tap="chkPlayStreamInApp_Tap">
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfAutoQueuePost, Source={StaticResource LocalizedStrings}}" x:Name="chkQueueAfterDownload" Tap="chkQueueAfterDownload_Tap">
                     <toolkit:ToggleSwitch.HeaderTemplate>
                         <DataTemplate>
                             <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
@@ -77,13 +59,13 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Play post directly in app or use default Windows Phone player" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfAutoQueuePostDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:ToggleSwitch.ContentTemplate>
                 </toolkit:ToggleSwitch>
 
-                <toolkit:ToggleSwitch Header="Auto resume post" x:Name="chkAutoResumeStream" Tap="chkAutoResumeStream_Tap">
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfPlayPostInApp, Source={StaticResource LocalizedStrings}}" x:Name="chkPlayStreamInApp" Tap="chkPlayStreamInApp_Tap">
                     <toolkit:ToggleSwitch.HeaderTemplate>
                         <DataTemplate>
                             <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
@@ -95,31 +77,13 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Auto resume previous playing post if you accidentally quit app" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfPlayPostInApDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:ToggleSwitch.ContentTemplate>
                 </toolkit:ToggleSwitch>
 
-                <toolkit:ToggleSwitch Header="Auto removed downloaded post" x:Name="chkAutoRemoveCompletedDownload" Tap="chkAutoRemoveCompletedDownload_Tap">
-                    <toolkit:ToggleSwitch.HeaderTemplate>
-                        <DataTemplate>
-                            <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
-                                            Foreground="{StaticResource PhoneForegroundBrush}" 
-                                            Content="{Binding}"/>
-                        </DataTemplate>
-                    </toolkit:ToggleSwitch.HeaderTemplate>
-                    <toolkit:ToggleSwitch.ContentTemplate>
-                        <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Auto remove downloaded post from download list" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </toolkit:ToggleSwitch.ContentTemplate>
-                </toolkit:ToggleSwitch>
-
-                <toolkit:ToggleSwitch Header="Download with Wifi" x:Name="chkJustDownloadWithWifi" Tap="chkJustDownloadWithWifi_Tap">
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfAutoResumePost, Source={StaticResource LocalizedStrings}}" x:Name="chkAutoResumeStream" Tap="chkAutoResumeStream_Tap">
                     <toolkit:ToggleSwitch.HeaderTemplate>
                         <DataTemplate>
                             <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
@@ -131,13 +95,13 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Just download when wifi connection available" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfAutoResumePostDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:ToggleSwitch.ContentTemplate>
                 </toolkit:ToggleSwitch>
 
-                <toolkit:ToggleSwitch Header="Auto backup" x:Name="chkAutoBackup" Tap="chkAutoBackup_Tap">
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfAutoRemoveDownloadedPost, Source={StaticResource LocalizedStrings}}" x:Name="chkAutoRemoveCompletedDownload" Tap="chkAutoRemoveCompletedDownload_Tap">
                     <toolkit:ToggleSwitch.HeaderTemplate>
                         <DataTemplate>
                             <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
@@ -149,7 +113,61 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
-                                <TextBlock Text="Always create a backup to avoid data losing" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfAutoRemoveDownloadedPostDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.ContentTemplate>
+                </toolkit:ToggleSwitch>
+
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfDownloadWithWifi, Source={StaticResource LocalizedStrings}}" x:Name="chkJustDownloadWithWifi" Tap="chkJustDownloadWithWifi_Tap">
+                    <toolkit:ToggleSwitch.HeaderTemplate>
+                        <DataTemplate>
+                            <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
+                                            Foreground="{StaticResource PhoneForegroundBrush}" 
+                                            Content="{Binding}"/>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.HeaderTemplate>
+                    <toolkit:ToggleSwitch.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfDownloadWithWifiDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.ContentTemplate>
+                </toolkit:ToggleSwitch>
+
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfAutoBackup, Source={StaticResource LocalizedStrings}}" x:Name="chkAutoBackup" Tap="chkAutoBackup_Tap">
+                    <toolkit:ToggleSwitch.HeaderTemplate>
+                        <DataTemplate>
+                            <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
+                                            Foreground="{StaticResource PhoneForegroundBrush}" 
+                                            Content="{Binding}"/>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.HeaderTemplate>
+                    <toolkit:ToggleSwitch.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfAutoBackupDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.ContentTemplate>
+                </toolkit:ToggleSwitch>
+
+                <toolkit:ToggleSwitch Header="{Binding Path=LocalizedResources.ConfKeepScreenOn, Source={StaticResource LocalizedStrings}}" x:Name="chkKeepScreenOn" Tap="chkKeepScreenOn_Tap">
+                    <toolkit:ToggleSwitch.HeaderTemplate>
+                        <DataTemplate>
+                            <ContentControl FontSize="{StaticResource PhoneFontSizeNormal}" 
+                                            Foreground="{StaticResource PhoneForegroundBrush}" 
+                                            Content="{Binding}"/>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.HeaderTemplate>
+                    <toolkit:ToggleSwitch.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <ContentControl HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeLarge}" Content="{Binding}"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.ConfKeepScreenOnDetails, Source={StaticResource LocalizedStrings}}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:ToggleSwitch.ContentTemplate>

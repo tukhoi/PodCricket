@@ -1,4 +1,5 @@
 ﻿using Coding4Fun.Toolkit.Controls;
+using PodCricket.WP.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace PodCricket.WP.Helper
     {
         public static void Show(string message, string title="PodCricket")
         {
+            title = AppResources.ApplicationTitle;
+
             ToastPrompt toast = new ToastPrompt();
             toast.Title = title;
             toast.Message = message;

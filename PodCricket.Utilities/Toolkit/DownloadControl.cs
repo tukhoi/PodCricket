@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PodCricket.Utilities.Toolkit
@@ -14,6 +15,24 @@ namespace PodCricket.Utilities.Toolkit
         /// Client should register to this to handle event when user clicks to "add to play" context menu item
         /// </summary>
         public event EventHandler AddToPlay;
+
+        private static readonly DependencyProperty CancelContextMenuTitleProperty =
+            DependencyProperty.Register("CancelContextMenuTitle", typeof(object), typeof(DownloadControl), new PropertyMetadata(false));
+
+        public object CancelContextMenuTitle
+        {
+            get { return (string)GetValue(CancelContextMenuTitleProperty); }
+            set { SetValue(CancelContextMenuTitleProperty, value); }
+        }
+
+        private static readonly DependencyProperty AddToPlayContextMenuTitleProperty =
+            DependencyProperty.Register("AddToPlayContextMenuTitle", typeof(object), typeof(DownloadControl), new PropertyMetadata(false));
+
+        public object AddToPlayContextMenuTitle
+        {
+            get { return (string)GetValue(AddToPlayContextMenuTitleProperty); }
+            set { SetValue(AddToPlayContextMenuTitleProperty, value); }
+        }
 
         public override void OnApplyTemplate()
         {
@@ -55,13 +74,13 @@ namespace PodCricket.Utilities.Toolkit
 
             var newCancelMenuItem = new MenuItem();
             newCancelMenuItem.Name = "ContextMenuCancel2";
-            newCancelMenuItem.Header = "cancel";
+            newCancelMenuItem.Header = this.CancelContextMenuTitle == null ? "cancel" : this.CancelContextMenuTitle;
             newCancelMenuItem.Tap += (sender, args) => { if (base.Monitor != null) base.Monitor.RequestCancel(); };
             contextMenu.Items.Add(newCancelMenuItem);
 
             var addToPlayMenuItem = new MenuItem();
             addToPlayMenuItem.Name = "ContextMenuAdd";
-            addToPlayMenuItem.Header = "add to play";
+            addToPlayMenuItem.Header = this.AddToPlayContextMenuTitle == null ? "add to play" : this.AddToPlayContextMenuTitle;
             addToPlayMenuItem.Tap += addToPlayAction_Tap;
 
             contextMenu.Items.Add(addToPlayMenuItem);

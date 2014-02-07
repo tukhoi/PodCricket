@@ -22,8 +22,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="PODCRICKET" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="about" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.AboutPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -45,13 +45,19 @@
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <TextBlock Style="{StaticResource PhoneTextLargeStyle}" 
                        VerticalAlignment="Center"
-                        Text="Podcast app for WP"/>
+                        Text="{Binding Path=LocalizedResources.AbtDescription, Source={StaticResource LocalizedStrings}}"/>
                 
-                    <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
-                       VerticalAlignment="Center"
-                        Margin="12,0,12,12"
-                       TextWrapping="Wrap"
-                        Text="Version 1.0.0.0"/>
+                <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
+                    VerticalAlignment="Center"
+                    Margin="12,0,12,0"
+                    TextWrapping="Wrap"
+                    Text="{Binding Path=LocalizedResources.AbtVersion, Source={StaticResource LocalizedStrings}}"/>
+
+                <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
+                    VerticalAlignment="Center"
+                    Margin="12,0,12,12"
+                    TextWrapping="Wrap"
+                    Text="{Binding Path=LocalizedResources.AbtUpdateDate, Source={StaticResource LocalizedStrings}}"/>
             </StackPanel>
             
 
@@ -64,12 +70,12 @@
                        Grid.Row="1"
                        Grid.ColumnSpan="2"
                         Margin="12,12,12,12"
-                        Text="Takes the shortest way to your favourite podcasts..."/>
+                        Text="{Binding Path=LocalizedResources.AbtSlogan, Source={StaticResource LocalizedStrings}}"/>
             <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
                        Grid.Row="2"
                        Grid.ColumnSpan="2"
                         Margin="12, 50,0,0"
-                        Text="Created by DaVang Solutions"/>
+                        Text="{Binding Path=LocalizedResources.AbtCreatedBy, Source={StaticResource LocalizedStrings}}"/>
             <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
                        Grid.Row="3"
                        Grid.ColumnSpan="2"
@@ -80,7 +86,7 @@
                        Grid.ColumnSpan="2"
                         Margin="12"
                         VerticalAlignment="Bottom"
-                        Text="2014 Copyright by DaVang Solutions"/>
+                        Text="{Binding Path=LocalizedResources.AbtCopyright, Source={StaticResource LocalizedStrings}}"/>
 
         </Grid>
     </Grid>

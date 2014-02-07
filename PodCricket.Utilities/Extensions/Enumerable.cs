@@ -16,6 +16,7 @@ namespace PodCricket.Utilities.Extensions
             foreach (var item in items)
                 action(item);
         }
+
         public static void ForEach<T, T1>(this IEnumerable<T> items, Action<T, T1> action, T1 t1)
         {
             if (action == null) return;

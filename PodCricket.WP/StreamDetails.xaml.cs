@@ -12,6 +12,7 @@ using PodCricket.Utilities.Extensions;
 using PodCricket.ApplicationServices;
 using Microsoft.Phone.Tasks;
 using PodCricket.WP.Helper;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP
 {
@@ -28,9 +29,10 @@ namespace PodCricket.WP
             _podManager = PodManager.Instance();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.SetProgressIndicator(true, "loading...");
+            CreateAppBar();
+            this.SetProgressIndicator(true, AppResources.LoadingTitle);
 
             var pod = ReloadPod();
             if (pod == null) this.BackToMainPage();
@@ -74,9 +76,9 @@ namespace PodCricket.WP
             
             var queueResult = _podManager.QueueToPlay(stream);
             if (!queueResult.HasError)
-                ToastMessage.Show("Added to play list");
+                ToastMessage.Show(AppResources.AddedToPlayListTitle);
             else
-                ToastMessage.Show(queueResult.ErrorMessage);
+                ToastMessage.Show(queueResult.ErrorMessage());
         }
 
         private void mnuDownload_Click(object sender, EventArgs e)
@@ -86,7 +88,7 @@ namespace PodCricket.WP
 
             var podResult = _podManager.GetPod(_podDetailModel.Id);
             if (podResult.HasError){
-                ToastMessage.Show(podResult.ErrorMessage);
+                ToastMessage.Show(podResult.ErrorMessage());
                 return;
             }
 
@@ -97,15 +99,15 @@ namespace PodCricket.WP
             var queueResult = _podManager.QueueToDownload(stream);
             if (queueResult.HasError)
                 if (queueResult.Error == ErrorCode.StreamAlreadyInDownloading &&
-                    MessageBox.Show("This post was requested to download. Do you want to retry?", "PodCricket", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    MessageBox.Show(AppResources.ReDownloadTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                     queueResult = _podManager.QueueToDownload(stream, true);
                 else
-                ToastMessage.Show(queueResult.ErrorMessage);
+                ToastMessage.Show(queueResult.ErrorMessage());
             
             if (!queueResult.HasError)
-                ToastMessage.Show("Added to download queue");
+                ToastMessage.Show(AppResources.AddedToDownloadTitle);
             else
-                ToastMessage.Show(queueResult.ErrorMessage);
+                ToastMessage.Show(queueResult.ErrorMessage());
         }
 
         private void LoadNextStream()
@@ -155,6 +157,25 @@ namespace PodCricket.WP
                 _currentIndex = 0;
 
             return result.Target;
+        }
+
+        private void CreateAppBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Mode = ApplicationBarMode.Default;
+
+            var downloadButton = new ApplicationBarIconButton();
+            downloadButton.Text = AppResources.AppBarDownloadTitlle;
+            downloadButton.IconUri = new Uri("/Assets/AppBar/download.png", UriKind.Relative);
+            downloadButton.Click += new EventHandler(mnuDownload_Click);
+
+            var playButton = new ApplicationBarIconButton();
+            playButton.Text = AppResources.AppBarPlayTitle;
+            playButton.IconUri = new Uri("/Assets/AppBar/transport.play.png", UriKind.Relative);
+            playButton.Click += new EventHandler(mnuPlay_Click);
+
+            ApplicationBar.Buttons.Add(downloadButton);
+            ApplicationBar.Buttons.Add(playButton);
         }
     }
 }

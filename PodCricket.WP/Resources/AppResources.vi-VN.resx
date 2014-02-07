@@ -122,265 +122,265 @@
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>vi-VN</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>PodCricket</value>
+    <value>Luyện nghe tiếng Anh</value>
   </data>
   <data name="AboutPageTitle" xml:space="preserve">
-    <value>about</value>
+    <value>giới thiệu</value>
   </data>
   <data name="ErrCouldNotDeleteStream" xml:space="preserve">
-    <value>post not deleted</value>
+    <value>không xóa được bài</value>
   </data>
   <data name="ErrCouldNotFindPod" xml:space="preserve">
-    <value>podcast could not be found</value>
+    <value>không tìm thấy kênh</value>
   </data>
   <data name="ErrCouldNotFindStream" xml:space="preserve">
-    <value>post not found</value>
+    <value>không tìm thấy bài</value>
   </data>
   <data name="ErrCouldNotSaveDownloadedStream" xml:space="preserve">
-    <value>post downloaded but could not be saved</value>
+    <value>bài đã tải xong nhưng không lưu được</value>
   </data>
   <data name="ErrGenericError" xml:space="preserve">
-    <value>there's an unknown error occured</value>
+    <value>ứng dụng gặp lỗi</value>
   </data>
   <data name="ErrGetPodError" xml:space="preserve">
-    <value>there's an error while get this podcast</value>
+    <value>có lỗi khi tìm kênh này</value>
   </data>
   <data name="ErrNetworkNotAvailable" xml:space="preserve">
-    <value>network not found</value>
+    <value>không có mạng</value>
   </data>
   <data name="ErrNoOfflineSearchedPodFound" xml:space="preserve">
-    <value>this podcast was not searched before</value>
+    <value>kênh này chưa được tìm</value>
   </data>
   <data name="ErrNoOnlineSearchedPodFound" xml:space="preserve">
-    <value>could not search for this podcast</value>
+    <value>không tìm được kênh này trên mạng</value>
   </data>
   <data name="ErrNoPlayingStreamFound" xml:space="preserve">
-    <value>there's no such post in play list</value>
+    <value>không có bài này trong danh sách nghe</value>
   </data>
   <data name="ErrNoPodSubscribed" xml:space="preserve">
-    <value>no such podcast subscribed</value>
+    <value>kênh này chưa được đăng ký</value>
   </data>
   <data name="ErrNoStreamDownloadingFound" xml:space="preserve">
-    <value>no such post in downloading</value>
+    <value>không có bài này trong danh sách tải</value>
   </data>
   <data name="ErrNoStreamDownloadUri" xml:space="preserve">
-    <value>no download link found</value>
+    <value>không tìm thấy link tải</value>
   </data>
   <data name="ErrPodPassedInNull" xml:space="preserve">
-    <value>podcast was not found</value>
+    <value>không tìm thấy kênh này</value>
   </data>
   <data name="ErrPodSubscribed" xml:space="preserve">
-    <value>this podcast is already subscribed</value>
+    <value>kênh này đã được đăng ký</value>
   </data>
   <data name="ErrStreamAlreadyInDownloading" xml:space="preserve">
-    <value>you already requested to download this post</value>
+    <value>bạn đã yêu cầu tải bài này</value>
   </data>
   <data name="ErrStreamAlreadyInPlayingList" xml:space="preserve">
-    <value>this post already queued in play list</value>
+    <value>bài này đã nằm trong danh sách nghe</value>
   </data>
   <data name="MainPageDownloadTitle" xml:space="preserve">
-    <value>download</value>
+    <value>tải</value>
   </data>
   <data name="MainPagePlayTitle" xml:space="preserve">
-    <value>play</value>
+    <value>nghe</value>
   </data>
   <data name="MainPageSearchTitle" xml:space="preserve">
-    <value>search</value>
+    <value>tìm</value>
   </data>
   <data name="MainPageSubscribedTitle" xml:space="preserve">
-    <value>subscribed</value>
+    <value>đăng ký</value>
   </data>
   <data name="PodcastDetailsPageTitle" xml:space="preserve">
-    <value>podcast</value>
+    <value>kênh</value>
   </data>
   <data name="PostDetailsPageTitle" xml:space="preserve">
-    <value>post</value>
+    <value>bài</value>
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
-    <value>settings</value>
+    <value>tùy chọn</value>
   </data>
   <data name="MainPageDownloadStatus" xml:space="preserve">
-    <value>there's no post selected to download...</value>
+    <value>chưa có bài để tải</value>
   </data>
   <data name="MainPagePauseButtonTitle" xml:space="preserve">
-    <value>pause</value>
+    <value>dừng</value>
   </data>
   <data name="MainPagePlayButtonTitle" xml:space="preserve">
-    <value>play</value>
+    <value>nghe</value>
   </data>
   <data name="MainPagePlayStatus" xml:space="preserve">
-    <value>there's no post selected to play...</value>
+    <value>chưa có bài để nghe</value>
   </data>
   <data name="MainPageSearchButtonTitle" xml:space="preserve">
-    <value>search</value>
+    <value>tìm</value>
   </data>
   <data name="MainPageSubscribedStatus" xml:space="preserve">
-    <value>ooops there's no subscribed pod</value>
+    <value>chưa có kênh nào được đăng ký</value>
   </data>
   <data name="MainPageTrackTimeTitle" xml:space="preserve">
-    <value>track time:</value>
+    <value>thời gian:</value>
   </data>
   <data name="ToolkitAddToDownload" xml:space="preserve">
-    <value>add to download</value>
+    <value>đưa vào danh sách tải</value>
   </data>
   <data name="ToolkitAddToPlay" xml:space="preserve">
-    <value>add to play</value>
+    <value>đưa vào danh sách nghe</value>
   </data>
   <data name="ToolkitDeleteDownloadedFile" xml:space="preserve">
-    <value>delete downloaded file</value>
+    <value>xóa bài đã tải</value>
   </data>
   <data name="ToolkitRemove" xml:space="preserve">
-    <value>remove</value>
+    <value>gỡ ra</value>
   </data>
   <data name="AbtCopyright" xml:space="preserve">
-    <value>2014 copyright by DaVang Solutions</value>
+    <value>2014 bản quyền của Davang Solutions</value>
   </data>
   <data name="AbtCreatedBy" xml:space="preserve">
-    <value>created by DaVang Solutions</value>
+    <value>thiết kế bởi DaVang Solutions</value>
   </data>
   <data name="AbtDescription" xml:space="preserve">
-    <value>podcast app for WP</value>
+    <value>luyện nghe tiếng Anh trên điện thoại</value>
   </data>
   <data name="AbtSlogan" xml:space="preserve">
-    <value>takes the shortest way to your favourite podcasts</value>
+    <value>luyện nghe tiếng Anh, mọi lúc, mọi nơi</value>
   </data>
   <data name="AbtVersion" xml:space="preserve">
-    <value>version 1.1</value>
+    <value>phiên bản 1.1</value>
   </data>
   <data name="ConfAutoBackup" xml:space="preserve">
-    <value>auto backup</value>
+    <value>tự động sao lưu</value>
   </data>
   <data name="ConfAutoBackupDetails" xml:space="preserve">
-    <value>always create a backup to avoid data losing</value>
+    <value>sao lưu để tránh mất dữ liệu</value>
   </data>
   <data name="ConfAutoQueuePost" xml:space="preserve">
-    <value>auto queue post</value>
+    <value>tự động đưa vào trang nghe bài</value>
   </data>
   <data name="ConfAutoQueuePostDetails" xml:space="preserve">
-    <value>auto queue downloaded post to playlist after downloading</value>
+    <value>tự động đưa bài đã được tải vào trang nghe bài</value>
   </data>
   <data name="ConfAutoRemoveDownloadedPost" xml:space="preserve">
-    <value>auto remove downloaded post</value>
+    <value>tự động xóa bài đã tải</value>
   </data>
   <data name="ConfAutoRemoveDownloadedPostDetails" xml:space="preserve">
-    <value>auto remove downloaded post from download list</value>
+    <value>tự động xóa bài đã tải ra khỏi trang download sau khi download xong</value>
   </data>
   <data name="ConfAutoResumePost" xml:space="preserve">
-    <value>auto resume post</value>
+    <value>nghe tiếp</value>
   </data>
   <data name="ConfAutoResumePostDetails" xml:space="preserve">
-    <value>auto resume previous playing postion if you accidentally quit app</value>
+    <value>tự động quay lại vị trí đang nghe khi vô tình ra khỏi ứng dụng</value>
   </data>
   <data name="ConfDownloadWithWifi" xml:space="preserve">
-    <value>download with wifi</value>
+    <value>tải với wifi</value>
   </data>
   <data name="ConfDownloadWithWifiDetails" xml:space="preserve">
-    <value>just download when wifi connection available</value>
+    <value>chỉ tải khi có kết nối wifi</value>
   </data>
   <data name="ConfigurationPageTitle" xml:space="preserve">
-    <value>configuration</value>
+    <value>tùy chọn</value>
   </data>
   <data name="ConfPlayPostInApDetails" xml:space="preserve">
-    <value>play post directly in app or use default Windows Phone player</value>
+    <value>nghe bài trong ứng dụng hay bằng chương trình mặc định của điện thoại</value>
   </data>
   <data name="ConfPlayPostInApp" xml:space="preserve">
-    <value>play post in app</value>
+    <value>nghe bài trong ứng dụng</value>
   </data>
   <data name="ConfShowAsGrid" xml:space="preserve">
-    <value>show as grid</value>
+    <value>hiển thị dạng ô</value>
   </data>
   <data name="ConfShowAsGridDetails" xml:space="preserve">
-    <value>show subscribed podcasts as grid or list view</value>
+    <value>hiển thị các kênh đã đăng ký dạng ô hay danh sách</value>
   </data>
   <data name="AddedToPlayListTitle" xml:space="preserve">
-    <value>added to playlist</value>
+    <value>đã đưa vào danh sách nghe</value>
   </data>
   <data name="AreYouSureTitle" xml:space="preserve">
-    <value>are you sure?</value>
+    <value>bạn có chắc?</value>
   </data>
   <data name="LoadingTitle" xml:space="preserve">
-    <value>loading...</value>
+    <value>đang tải...</value>
   </data>
   <data name="SearchingErrorTitle" xml:space="preserve">
-    <value>error while searching, please try again later...</value>
+    <value>có lỗi khi tìm, vui lòng thử lại sau</value>
   </data>
   <data name="SearchingTitle" xml:space="preserve">
-    <value>searching...</value>
+    <value>đang tìm...</value>
   </data>
   <data name="StreammingTitle" xml:space="preserve">
-    <value>streamming...</value>
+    <value>đang tải...</value>
   </data>
   <data name="SubscribeTitle" xml:space="preserve">
-    <value>subscribe</value>
+    <value>đăng ký</value>
   </data>
   <data name="SubscribeSuccessfullyTitle" xml:space="preserve">
-    <value>subscribe successfully!</value>
+    <value>đăng ký thành công!</value>
   </data>
   <data name="UnsubscribeTitle" xml:space="preserve">
-    <value>unsubscribe</value>
+    <value>hủy đăng ký</value>
   </data>
   <data name="AddedToDownloadTitle" xml:space="preserve">
-    <value>added to download queue</value>
+    <value>đã đưa vào danh sách tải</value>
   </data>
   <data name="AppBarRefreshTitle" xml:space="preserve">
-    <value>refresh</value>
+    <value>cập nhật</value>
   </data>
   <data name="DeletedDownloadedFile" xml:space="preserve">
-    <value>deleted post</value>
+    <value>đã xóa bài</value>
   </data>
   <data name="ReDownloadTitle" xml:space="preserve">
-    <value>this post was requested to download, do you want to retry?</value>
+    <value>bài này đã được tải, bạn muốn tải lại?</value>
   </data>
   <data name="UnsubscribeSuccessfullyTitle" xml:space="preserve">
-    <value>unsubscribe successfully!</value>
+    <value>hủy đăng ký thành công</value>
   </data>
   <data name="AuthorTitle" xml:space="preserve">
-    <value>author</value>
+    <value>tác giả</value>
   </data>
   <data name="GenresTitle" xml:space="preserve">
-    <value>genres</value>
+    <value>thể loại</value>
   </data>
   <data name="PublishedTitle" xml:space="preserve">
-    <value>published</value>
+    <value>xuất bản</value>
   </data>
   <data name="UrlTitle" xml:space="preserve">
-    <value>url</value>
+    <value>địa chỉ</value>
   </data>
   <data name="AppBarAboutTitle" xml:space="preserve">
-    <value>about</value>
+    <value>giới thiệu</value>
   </data>
   <data name="AppBarDownloadTitlle" xml:space="preserve">
-    <value>download</value>
+    <value>tải</value>
   </data>
   <data name="AppBarPlayTitle" xml:space="preserve">
-    <value>play</value>
+    <value>nghe</value>
   </data>
   <data name="AppBarSettingTitle" xml:space="preserve">
-    <value>settings</value>
+    <value>tùy chọn</value>
   </data>
   <data name="LoadingErrorTitle" xml:space="preserve">
-    <value>error while loading, please try again later</value>
+    <value>có lỗi khi tải, vui lòng thử lại sau</value>
   </data>
   <data name="AddToPlayContextMenuTitle" xml:space="preserve">
-    <value>add to play</value>
+    <value>đưa vào danh sách nghe</value>
   </data>
   <data name="CancelContextMenuTitle" xml:space="preserve">
-    <value>cancel</value>
+    <value>hủy</value>
   </data>
   <data name="ConfKeepScreenOn" xml:space="preserve">
-    <value>keep screen on</value>
+    <value>giữ màn hình bật</value>
   </data>
   <data name="ConfKeepScreenOnDetails" xml:space="preserve">
-    <value>prevent screen turned off while playing post</value>
+    <value>giữ màn hình luôn bật khi nghe bài</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
-    <value>updated on Feb 12 2014</value>
+    <value>cập nhật ngày 12/02/2014</value>
   </data>
   <data name="OpeningTitle" xml:space="preserve">
-    <value>loading...</value>
+    <value>đang mở...</value>
   </data>
 </root>

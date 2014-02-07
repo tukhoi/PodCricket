@@ -22,6 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Threading;
 using System.Windows.Threading;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP
 {
@@ -47,9 +48,9 @@ namespace PodCricket.WP
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.SetProgressIndicator(true, "loading...");
+            this.CreateAppBar();
+            this.SetProgressIndicator(true, AppResources.OpeningTitle);
             await Reload();
-            
             this.SetProgressIndicator(false);
 
             base.OnNavigatedTo(e);
@@ -146,6 +147,25 @@ namespace PodCricket.WP
                 Dispatcher.BeginInvoke(() => Binding()));
         }
 
+        private void CreateAppBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+
+            var settingButton = new ApplicationBarIconButton();
+            settingButton.Text = AppResources.AppBarSettingTitle;
+            settingButton.IconUri = new Uri("/Assets/AppBar/feature.settings.png", UriKind.Relative);
+            settingButton.Click += new EventHandler(mnuSetting_Click);
+
+            var aboutButton = new ApplicationBarIconButton();
+            aboutButton.Text = AppResources.AppBarAboutTitle;
+            aboutButton.IconUri = new Uri("/Assets/AppBar/like.png", UriKind.Relative);
+            aboutButton.Click += new EventHandler(mnuAbout_Click);
+
+            ApplicationBar.Buttons.Add(settingButton);
+            ApplicationBar.Buttons.Add(aboutButton);
+        }
+
         #endregion
 
         #region Subscribed
@@ -200,31 +220,34 @@ namespace PodCricket.WP
             if (podId.Equals(default(Guid))) return;
 
             AppResult<bool> result = null;
+            string message = string.Empty;
 
             if (podModel.Subscribed)
             {
-                if (MessageBox.Show("Are you sure?", "PodCricket", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show(AppResources.AreYouSureTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    this.SetProgressIndicator(true, "unsubscribing...");
+                    this.SetProgressIndicator(true, AppResources.UnsubscribeTitle + "...");
                     result = await _podManager.UnSubscribePodAsync(podModel.Id);
                     this.SetProgressIndicator(false);
+                    message = AppResources.UnsubscribeSuccessfullyTitle;
                 }
                 else return;
             }
             else
             {
-                this.SetProgressIndicator(true, "subscribing...");
+                this.SetProgressIndicator(true, AppResources.SubscribeTitle + "...");
                 result = await _podManager.SubscribePodAsync(podModel.Id);
                 this.SetProgressIndicator(false);
+                message = AppResources.SubscribeSuccessfullyTitle;
             }
 
             if (!result.HasError)
             {
-                ToastMessage.Show(string.Format("{0} successfully!", podModel.SubscribeCaption));
+                ToastMessage.Show(message, AppResources.ApplicationTitle);
                 await Reload();
             }
             else
-                ToastMessage.Show(result.ErrorMessage);
+                ToastMessage.Show(result.ErrorMessage());
         }
 
         #endregion
@@ -254,14 +277,13 @@ namespace PodCricket.WP
 
             if (!ConnectivityHelper.NetworkAvailable())
             {
-                ToastMessage.Show("Network not available");
+                ToastMessage.Show(AppResources.ErrNetworkNotAvailable);
                 return;
             }
 
             try
             {
-
-                this.SetProgressIndicator(true, "searching...");
+                this.SetProgressIndicator(true, AppResources.SearchingTitle);
 
                 var result = await _podManager.SearchPod(txtSearch.Text);
                 if (result.HasError) return;
@@ -275,7 +297,7 @@ namespace PodCricket.WP
             }
             catch (Exception)
             {
-                ToastMessage.Show("Error while searching. Please try again later.");
+                ToastMessage.Show(AppResources.SearchingErrorTitle);
             }
         }
 
@@ -387,10 +409,10 @@ namespace PodCricket.WP
 
             var queueResult = _podManager.QueueToPlay(monitor.Tag as PodCricket.ApplicationServices.Stream);
             if (queueResult.HasError)
-                ToastMessage.Show(queueResult.ErrorMessage);
+                ToastMessage.Show(queueResult.ErrorMessage());
             else
             {
-                ToastMessage.Show("Added to playlist");
+                ToastMessage.Show(AppResources.AddedToPlayListTitle);
                 BindPlayingList();
                 this.DataContext = _mainModel;
             }
@@ -428,7 +450,7 @@ namespace PodCricket.WP
             monitor.Complete += monitor_Complete;
         }
 
-        async void monitor_Complete(object sender, BackgroundTransferEventArgs e)
+        void monitor_Complete(object sender, BackgroundTransferEventArgs e)
         {
             if (AppConfig.Instance().QueueStreamToPlayListAfterDownloading)
             {
@@ -486,7 +508,7 @@ namespace PodCricket.WP
 
             if (_currentPlayingStreamModel == null)
             {
-                txtPlayStatus.Text = "There's no post selected to play...";
+                txtPlayStatus.Text = AppResources.MainPagePlayStatus;
                 txtTrackTimeCaption.Visibility = System.Windows.Visibility.Collapsed;
 
                 sldPlaying.Visibility = System.Windows.Visibility.Collapsed;
@@ -550,7 +572,7 @@ namespace PodCricket.WP
                 || mediaElement.CurrentState == MediaElementState.Opening)
             {
                 _currentPlayingStreamPositionTimer.Stop();
-                this.SetProgressIndicator(true, "streamming...");
+                this.SetProgressIndicator(true, AppResources.StreammingTitle);
 
                 _currentTrackLastKnownPosition = LoadCurrentLastKnownPostionOfCurrentStream();
             }
@@ -559,7 +581,7 @@ namespace PodCricket.WP
 
             if (mediaElement.CurrentState == MediaElementState.Playing)
             {
-
+                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
                 _currentPlayingStreamPositionTimer.Start();
 
                 // add play position here
@@ -585,10 +607,11 @@ namespace PodCricket.WP
                 pause_btn.IsHitTestVisible = true;
 
                 mediaElement.Position = TimeSpan.FromMinutes(_currentTrackLastKnownPosition);
-
-                
             }
-            else 
+            else
+            {
+                PhoneApplicationService.Current.UserIdleDetectionMode = App._originalIdleDectectionMode;   
+
                 if (mediaElement.CurrentState == MediaElementState.Paused)
                 {
                     _currentPlayingStreamPositionTimer.Stop();
@@ -604,6 +627,7 @@ namespace PodCricket.WP
                 }
                 else
                     _currentPlayingStreamPositionTimer.Stop();
+            }
         }
 
         private double LoadCurrentLastKnownPostionOfCurrentStream()

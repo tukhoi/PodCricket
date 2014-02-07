@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using PodCricket.ApplicationServices;
 using PodCricket.Utilities.Extensions;
 using System.Threading.Tasks;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP
 {
@@ -22,7 +23,7 @@ namespace PodCricket.WP
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.SetProgressIndicator(true, "please wait while loading...");
+            this.SetProgressIndicator(true, AppResources.OpeningTitle);
             SetEnable(false);
 
             await Task.Factory.StartNew(() =>
@@ -42,6 +43,7 @@ namespace PodCricket.WP
             chkPlayStreamInApp.IsChecked = AppConfig.Instance().PlayStreamInApp;
             chkAutoResumeStream.IsChecked = AppConfig.Instance().AutoResumeStream;
             chkAutoBackup.IsChecked = AppConfig.Instance().AutoBackup;
+            chkKeepScreenOn.IsChecked = AppConfig.Instance().KeepScreenOn;
         }
 
         private void SetEnable(bool enabled)
@@ -53,6 +55,7 @@ namespace PodCricket.WP
             this.chkPlayStreamInApp.IsEnabled = enabled;
             this.chkJustDownloadWithWifi.IsEnabled = enabled;
             this.chkAutoBackup.IsEnabled = enabled;
+            this.chkKeepScreenOn.IsEnabled = enabled;
         }
 
         #region Event Handler
@@ -97,6 +100,12 @@ namespace PodCricket.WP
         {
             AppConfig.Instance().AutoBackup = chkAutoBackup.IsChecked.HasValue ?
                 chkAutoBackup.IsChecked.Value : true;
+        }
+
+        private void chkKeepScreenOn_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            AppConfig.Instance().KeepScreenOn = chkKeepScreenOn.IsChecked.HasValue ?
+                chkKeepScreenOn.IsChecked.Value : true;
         }
 
         #endregion

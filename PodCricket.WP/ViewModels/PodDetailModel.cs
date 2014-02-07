@@ -12,6 +12,7 @@ using System.Windows.Media;
 using PodCricket.Utilities.Helpers;
 using System.IO;
 using PodCricket.ApplicationServices.Helper;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP.ViewModels
 {
@@ -48,17 +49,17 @@ namespace PodCricket.WP.ViewModels
             if (string.IsNullOrEmpty(pod.Author))
                 this.AuthorVisibility = Visibility.Collapsed;
             else
-                this.Author = "Author: " + pod.Author;
+                this.Author = AppResources.AuthorTitle + ": " + pod.Author;
 
             if (string.IsNullOrEmpty(pod.DisplayUrl))
                 this.DisplayUrlVisibility = Visibility.Collapsed;
             else
-                this.DisplayUrl = "Url: " + pod.DisplayUrl;
+                this.DisplayUrl = AppResources.UrlTitle + ": " + pod.DisplayUrl;
 
             if (string.IsNullOrEmpty(pod.Genres))
                 this.GenresVisibility = Visibility.Collapsed;
             else
-                this.Genres = "Genres: " + pod.Genres;
+                this.Genres = AppResources.GenresTitle + ": " + pod.Genres;
 
             Uri imageUri;
             if (Uri.TryCreate(pod.ImageUrl, UriKind.Absolute, out imageUri))
@@ -66,7 +67,7 @@ namespace PodCricket.WP.ViewModels
             else
                 this.Image = new BitmapImage(new Uri(@"Resources/default-pod.png", UriKind.RelativeOrAbsolute));
 
-            this.RegisterCaption = pod.Subscribed ? "UnSubscribe" : "Subscribe";
+            this.RegisterCaption = pod.Subscribed ? AppResources.UnsubscribeTitle : AppResources.SubscribeTitle;
             this.Subscribed = pod.Subscribed;
             if (pod.StreamList != null && pod.StreamList.Count > 0)
                 pod.StreamList.ForEach(s => this.StreamList.Add(new StreamModel().GetFrom(s)));
@@ -106,8 +107,8 @@ namespace PodCricket.WP.ViewModels
             this.LocalDownloadPath = stream.LocalDownloadPath;
 
             this.Id = stream.Id ?? string.Empty;
-            this.Authors = stream.Authors ?? "Authors: " + stream.Authors;
-            this.PublishDate = stream.PublishDate ?? "Published: " + stream.PublishDate;
+            this.Authors = stream.Authors ?? AppResources.AuthorTitle + ": " + stream.Authors;
+            this.PublishDate = stream.PublishDate ?? AppResources.PublishedTitle + ": " + stream.PublishDate;
             this.Title = stream.Title ?? stream.Title;
             this.Summary = stream.Summary ?? stream.Summary;
             this.DownloadUri = stream.DownloadUri ?? stream.DownloadUri;

@@ -22,7 +22,7 @@ namespace PodCricket.WP
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
-        public bool _activated = false;
+        public static IdleDetectionMode _originalIdleDectectionMode;
 
         /// <summary>
         /// Constructor for the Application object.
@@ -67,8 +67,8 @@ namespace PodCricket.WP
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            _originalIdleDectectionMode = PhoneApplicationService.Current.UserIdleDetectionMode;
             PodManager.Instance().LoadPodMap();
-            _activated = true;
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -80,11 +80,10 @@ namespace PodCricket.WP
             //{
             //    App.ViewModel.LoadData();
             //}
-            
+
+            _originalIdleDectectionMode = PhoneApplicationService.Current.UserIdleDetectionMode;
             if (!e.IsApplicationInstancePreserved)
                 PodManager.Instance().LoadPodMap();
-
-            _activated = true;
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -92,6 +91,7 @@ namespace PodCricket.WP
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             // Ensure that required application state is persisted here.
+            PhoneApplicationService.Current.UserIdleDetectionMode = _originalIdleDectectionMode;
             PodManager.Instance().SavePodMap();
             //Save current track position;
         }
@@ -100,6 +100,7 @@ namespace PodCricket.WP
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            PhoneApplicationService.Current.UserIdleDetectionMode = _originalIdleDectectionMode;
             PodManager.Instance().SavePodMap();
         }
 

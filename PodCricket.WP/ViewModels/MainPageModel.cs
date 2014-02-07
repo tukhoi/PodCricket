@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Media.Imaging;
 using Microsoft.Phone.Controls;
 using PodCricket.Utilities.Toolkit;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP.ViewModels
 {
@@ -104,7 +105,7 @@ namespace PodCricket.WP.ViewModels
             this.Details = CreatePodDetails();
             this.Subscribed = pod.Subscribed;
             this.RegisterVisibility = pod.Subscribed ? System.Windows.Visibility.Collapsed : System.Windows.Visibility.Visible;
-            this.SubscribeCaption = pod.Subscribed ? "unsubscribe" : "subscribe";
+            this.SubscribeCaption = pod.Subscribed ? AppResources.UnsubscribeTitle : AppResources.SubscribeTitle;
 
             return this;
         }
@@ -112,9 +113,9 @@ namespace PodCricket.WP.ViewModels
         private string CreatePodDetails()
         {
             var details = new StringBuilder();
-            if (!string.IsNullOrEmpty(DisplayUrl)) details.AppendLine("Url: " + DisplayUrl);
-            if (!string.IsNullOrEmpty(Author)) details.AppendLine("Author: " + Author);
-            if (!string.IsNullOrEmpty(Genres)) details.AppendLine("Genres: " + Genres);
+            if (!string.IsNullOrEmpty(DisplayUrl)) details.AppendLine(AppResources.UrlTitle + ": " + DisplayUrl);
+            if (!string.IsNullOrEmpty(Author)) details.AppendLine(AppResources.AuthorTitle + ": " + Author);
+            if (!string.IsNullOrEmpty(Genres)) details.AppendLine(AppResources.GenresTitle + ": " + Genres);
 
             return details.ToString();
         }

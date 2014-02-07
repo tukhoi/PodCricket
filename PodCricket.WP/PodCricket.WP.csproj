@@ -15,8 +15,7 @@
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>
-    </SupportedCultures>
+    <SupportedCultures>vi%3bvi-VN</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>PodCricket.WP_$(Configuration)_$(Platform).xap</XapFilename>
@@ -99,6 +98,7 @@
     <Compile Include="ConfigurationPage.xaml.cs">
       <DependentUpon>ConfigurationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AppResultExtensions.cs" />
     <Compile Include="Helper\MediaHelper.cs" />
     <Compile Include="Helper\ToastMessage.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -208,6 +208,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\AppResources.vi.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PodCricket.ApplicationServices\PodCricket.ApplicationServices.csproj">

@@ -42,6 +42,8 @@ namespace PodCricket.ApplicationServices
                     return "JustDownloadWithWifi";
                 case BooleanConfigName.AutoBackup:
                     return "AutoBackup";
+                case BooleanConfigName.KeepScreenOn:
+                    return "KeepScreenOn";
             }
 
             return string.Empty;
@@ -55,7 +57,8 @@ namespace PodCricket.ApplicationServices
             AutoResumeStream,
             AutoRemoveCompletedDownload,
             JustDownloadWithWifi,
-            AutoBackup
+            AutoBackup,
+            KeepScreenOn
         }
 
         public bool SubscribedPodsAsGrid
@@ -137,6 +140,18 @@ namespace PodCricket.ApplicationServices
             set
             {
                 SetConfig(GetConfigKey(BooleanConfigName.AutoBackup), value);
+            }
+        }
+
+        public bool KeepScreenOn
+        {
+            get
+            {
+                return GetConfig(GetConfigKey(BooleanConfigName.KeepScreenOn), true);
+            }
+            set
+            {
+                SetConfig(GetConfigKey(BooleanConfigName.KeepScreenOn), value);
             }
         }
 

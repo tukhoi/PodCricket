@@ -16,23 +16,16 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:myToolkit="clr-namespace:PodCricket.Utilities.Toolkit;assembly=PodCricket.Utilities">
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.settings.png" Text="setting" Click="mnuSetting_Click"/>
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/like.png" Text="about" Click="mnuAbout_Click"/>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Panorama Control-->
 
-        <phone:Pivot Title="PodCricket" x:Name="MainPanorama" Margin="0, 0, 0, 0">
+        <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" x:Name="MainPanorama" Margin="0, 0, 0, 0">
 
             <!--Panorama item one-->
-            <phone:PivotItem Header="subscribed">
+            <phone:PivotItem Header="{Binding Path=LocalizedResources.MainPageSubscribedTitle, Source={StaticResource LocalizedStrings}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <TextBlock x:Name="txtSubcribedStatus" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap" Text="Ooops there's no subscribed pod" Visibility="Collapsed"/>
+                        <TextBlock x:Name="txtSubcribedStatus" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.MainPageSubscribedStatus, Source={StaticResource LocalizedStrings}}" Visibility="Collapsed"/>
                         <phone:LongListSelector x:Name="llsGridSubscribedPods"
                             Margin="12,0,0,12"
                             ItemsSource="{Binding PodList}"
@@ -88,7 +81,7 @@
                 </ScrollViewer>
             </phone:PivotItem>
 
-            <phone:PivotItem Header="search">
+            <phone:PivotItem Header="{Binding Path=LocalizedResources.MainPageSearchTitle, Source={StaticResource LocalizedStrings}}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -101,7 +94,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBox x:Name="txtSearch" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap"/>
-                        <Button x:Name="btnSearch" Grid.Row="0" Grid.Column="1" Width="123" Content="search" Click="btnSearch_Click"/>
+                        <Button x:Name="btnSearch" Grid.Row="0" Grid.Column="1" Width="123" Content="{Binding Path=LocalizedResources.MainPageSearchButtonTitle, Source={StaticResource LocalizedStrings}}" Click="btnSearch_Click"/>
                     </Grid>
 
                     <phone:LongListSelector x:Name="llsPodSearchList" Grid.Row="1"
@@ -135,10 +128,10 @@
                 </Grid>
             </phone:PivotItem>
 
-            <phone:PivotItem Header="download">
+            <phone:PivotItem Header="{Binding Path=LocalizedResources.MainPageDownloadTitle, Source={StaticResource LocalizedStrings}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <TextBlock x:Name="txtDownloadStatus" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap" Text="There's no post selected to download..." Visibility="Collapsed"/>
+                        <TextBlock x:Name="txtDownloadStatus" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.MainPageDownloadStatus, Source={StaticResource LocalizedStrings}}" Visibility="Collapsed"/>
                         <phone:LongListSelector
                             Margin="0,0,0,12"
                             x:Name="llsDownloading"
@@ -147,7 +140,9 @@
                             Tap="llsDownloading_Tap">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
-                                    <myToolkit:DownloadControl 
+                                    <myToolkit:DownloadControl
+                                        CancelContextMenuTitle="{Binding Path=LocalizedResources.CancelContextMenuTitle, Source={StaticResource LocalizedStrings}}"
+                                        AddToPlayContextMenuTitle="{Binding Path=LocalizedResources.AddToPlayContextMenuTitle, Source={StaticResource LocalizedStrings}}"
                                         StatusTextBrush="Gray"
                                         Monitor="{Binding}" AddToPlay="DownloadControl_AddToPlay">
                                         <toolkit:TransferControl.HeaderTemplate>
@@ -171,7 +166,7 @@
                 </ScrollViewer>
             </phone:PivotItem>
 
-            <phone:PivotItem Header="play">
+            <phone:PivotItem Header="{Binding Path=LocalizedResources.MainPagePlayTitle, Source={StaticResource LocalizedStrings}}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -181,7 +176,7 @@
                     <Grid x:Name="ContentPanel" Grid.Row="0" Margin="12,0,12,0" >
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="58"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="58"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -191,19 +186,19 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Height="58" Grid.Row="0" Grid.ColumnSpan="2" x:Name="txtPlayStatus" 
+                            <TextBlock Height="Auto" Grid.Row="0" Grid.ColumnSpan="2" x:Name="txtPlayStatus" 
                                        Margin="0"
                                        Style="{StaticResource PhoneTextSmallStyle}" 
-                                        VerticalAlignment="Center"
+                                       VerticalAlignment="Center"
                                        TextWrapping="Wrap"
-                                       Text="There's no post selected to play..." 
+                                       Text="{Binding Path=LocalizedResources.MainPagePlayStatus, Source={StaticResource LocalizedStrings}}" 
                                        Visibility="Visible"/>
 
                             <TextBlock Height="58" Grid.Row="1" Grid.Column="0" 
                                        Margin="0"
                                        HorizontalAlignment="Left" 
                                        Name="txtTrackTimeCaption" 
-                                       Text="Track Time:" 
+                                       Text="{Binding Path=LocalizedResources.MainPageTrackTimeTitle, Source={StaticResource LocalizedStrings}}" 
                                        VerticalAlignment="Top" 
                                        Width="208"  
                                        Style="{StaticResource PhoneTextTitle1Style}" 
@@ -229,8 +224,8 @@
                             <Slider x:Name="sldPlaying" 
                                     Grid.Row="2" 
                                     Grid.ColumnSpan="2" ManipulationCompleted="sldPlaying_ManipulationCompleted" ManipulationStarted="sldPlaying_ManipulationStarted"/>
-                        
-                            <Button Content="play"  
+
+                            <Button Content="{Binding Path=LocalizedResources.MainPagePlayButtonTitle, Source={StaticResource LocalizedStrings}}"  
                                     Grid.Row="3"
                                     Grid.ColumnSpan="2"
                                     Visibility="Collapsed"  
@@ -240,8 +235,8 @@
                                     VerticalAlignment="Top" 
                                     Width="200" 
                                     Click="play_btn_Click" />
-                            
-                            <Button Content="pause" 
+
+                            <Button Content="{Binding Path=LocalizedResources.MainPagePauseButtonTitle, Source={StaticResource LocalizedStrings}}" 
                                     Grid.Row="3"
                                     Grid.ColumnSpan="2"
                                     Visibility="Collapsed"  
@@ -271,7 +266,7 @@
 
                                             <toolkit:ContextMenuService.ContextMenu>
                                                 <toolkit:ContextMenu BorderThickness="0" BorderBrush="White">
-                                                    <toolkit:MenuItem Header="remove" Click="ctxRemove_Click"/>
+                                                    <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ToolkitRemove, Source={StaticResource LocalizedStrings}}" Click="ctxRemove_Click"/>
                                                 </toolkit:ContextMenu>
                                             </toolkit:ContextMenuService.ContextMenu>
 

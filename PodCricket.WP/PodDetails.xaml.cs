@@ -13,6 +13,7 @@ using PodCricket.Utilities.Extensions;
 using System.Collections.ObjectModel;
 using PodCricket.WP.Helper;
 using PodCricket.Utilities.Helpers;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP
 {
@@ -40,7 +41,7 @@ namespace PodCricket.WP
 
             if (!ConnectivityHelper.NetworkAvailable())
             {
-                ToastMessage.Show("Network not found");
+                ToastMessage.Show(AppResources.ErrNetworkNotAvailable);
                 return;
             }
 
@@ -49,11 +50,11 @@ namespace PodCricket.WP
                 var result = _podManager.GetPod(_model.Id);
                 if (result.HasError) this.BackToMainPage();
 
-                this.SetProgressIndicator(true, "searching...");
+                this.SetProgressIndicator(true, AppResources.LoadingTitle);
                 var refreshResult = await _podManager.GetStreamList(result.Target);
 
                 if (refreshResult.HasError)
-                    ToastMessage.Show(refreshResult.ErrorMessage);
+                    ToastMessage.Show(refreshResult.ErrorMessage());
 
                 _model = new PodDetailModel().GetFrom(result.Target);
 
@@ -61,7 +62,7 @@ namespace PodCricket.WP
             }
             catch (Exception)
             {
-                ToastMessage.Show("Error while searching. Please try again later.");
+                ToastMessage.Show(AppResources.LoadingErrorTitle);
             }
             this.SetProgressIndicator(false);
         }
@@ -71,20 +72,20 @@ namespace PodCricket.WP
             var message = string.Empty;
             if (!_model.Subscribed)
             {
-                this.SetProgressIndicator(true, "subscribing...");
+                this.SetProgressIndicator(true, AppResources.SubscribeTitle + "...");
                 var result = await _podManager.SubscribePodAsync(_model.Id);
                 this.SetProgressIndicator(false);
-                message = result.HasError ? result.ErrorMessage : "Subscribe successfully!";
+                message = result.HasError ? result.ErrorMessage() : AppResources.SubscribeSuccessfullyTitle;
             }
 
             if (_model.Subscribed)
             {
-                if (MessageBox.Show("Are you sure?", "PodCricket", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show(AppResources.AreYouSureTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    this.SetProgressIndicator(true, "unsubscribing...");
+                    this.SetProgressIndicator(true, AppResources.UnsubscribeTitle + "...");
                     var result = await _podManager.UnSubscribePodAsync(_model.Id);
                     this.SetProgressIndicator(false);
-                    message = result.HasError ? result.ErrorMessage : "Unsubscribe successfully!";
+                    message = result.HasError ? result.ErrorMessage() : AppResources.UnsubscribeSuccessfullyTitle;
                 }
                 else
                     return;
@@ -110,18 +111,18 @@ namespace PodCricket.WP
             var queueResult = _podManager.QueueToDownload(stream);
             if (queueResult.HasError)
                 if (queueResult.Error == ErrorCode.StreamAlreadyInDownloading &&
-                    MessageBox.Show("This post was requested to download. Do you want to retry?", "PodCricket", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    MessageBox.Show(AppResources.ReDownloadTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                     queueResult = _podManager.QueueToDownload(stream, true);
                 else
-                    ToastMessage.Show(queueResult.ErrorMessage);
+                    ToastMessage.Show(queueResult.ErrorMessage());
 
             if (!queueResult.HasError)
             {
-                ToastMessage.Show("Added to download queue");
+                ToastMessage.Show(AppResources.AddedToDownloadTitle);
                 Binding();
             }
             else
-                ToastMessage.Show(queueResult.ErrorMessage);
+                ToastMessage.Show(queueResult.ErrorMessage());
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -139,9 +140,9 @@ namespace PodCricket.WP
 
             var queueResult = _podManager.QueueToPlay(stream);
             if (!queueResult.HasError)
-                ToastMessage.Show("Added to play list");
+                ToastMessage.Show(AppResources.AddedToPlayListTitle);
             else
-                ToastMessage.Show(queueResult.ErrorMessage);
+                ToastMessage.Show(queueResult.ErrorMessage());
         }
 
         private void btnDeleteDownloadedFile_Click(object sender, RoutedEventArgs e)
@@ -156,10 +157,10 @@ namespace PodCricket.WP
             var deleteResult = _podManager.DeleteDownloadedStream(streamResult.Target);
 
             if (deleteResult.HasError)
-                ToastMessage.Show(deleteResult.ErrorMessage);
+                ToastMessage.Show(deleteResult.ErrorMessage());
             else
             {
-                ToastMessage.Show("Deleted");
+                ToastMessage.Show(AppResources.DeletedDownloadedFile);
                 Binding();
             }
         }
@@ -209,11 +210,11 @@ namespace PodCricket.WP
             ApplicationBar.Mode = ApplicationBarMode.Default;
 
             var refreshButton = new ApplicationBarIconButton();
-            refreshButton.Text = "refresh";
+            refreshButton.Text = AppResources.AppBarRefreshTitle;
             refreshButton.IconUri = new Uri("/Assets/AppBar/refresh.png", UriKind.Relative);
             refreshButton.Click += new EventHandler(btnShowStream_Click);
 
-            var subscribeCaption = subscribed ? "Unsubscribe" : "Subscribe";
+            var subscribeCaption = subscribed ? AppResources.UnsubscribeTitle : AppResources.SubscribeTitle;
             var iconUri = subscribed ? new Uri("/Toolkit.Content/ApplicationBar.Cancel.png", UriKind.Relative) : 
                 new Uri("/Toolkit.Content/ApplicationBar.Check.png", UriKind.Relative);
 

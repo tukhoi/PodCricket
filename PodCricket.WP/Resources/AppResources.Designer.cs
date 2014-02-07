@@ -61,11 +61,137 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to about.
         /// </summary>
         public static string AboutPageTitle {
             get {
                 return ResourceManager.GetString("AboutPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2014 copyright by DaVang Solutions.
+        /// </summary>
+        public static string AbtCopyright {
+            get {
+                return ResourceManager.GetString("AbtCopyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to created by DaVang Solutions.
+        /// </summary>
+        public static string AbtCreatedBy {
+            get {
+                return ResourceManager.GetString("AbtCreatedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to podcast app for WP.
+        /// </summary>
+        public static string AbtDescription {
+            get {
+                return ResourceManager.GetString("AbtDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to takes the shortest way to your favourite podcasts.
+        /// </summary>
+        public static string AbtSlogan {
+            get {
+                return ResourceManager.GetString("AbtSlogan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to updated on Feb 12 2014.
+        /// </summary>
+        public static string AbtUpdateDate {
+            get {
+                return ResourceManager.GetString("AbtUpdateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to version 1.1.
+        /// </summary>
+        public static string AbtVersion {
+            get {
+                return ResourceManager.GetString("AbtVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to added to download queue.
+        /// </summary>
+        public static string AddedToDownloadTitle {
+            get {
+                return ResourceManager.GetString("AddedToDownloadTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to added to playlist.
+        /// </summary>
+        public static string AddedToPlayListTitle {
+            get {
+                return ResourceManager.GetString("AddedToPlayListTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to add to play.
+        /// </summary>
+        public static string AddToPlayContextMenuTitle {
+            get {
+                return ResourceManager.GetString("AddToPlayContextMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to about.
+        /// </summary>
+        public static string AppBarAboutTitle {
+            get {
+                return ResourceManager.GetString("AppBarAboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to download.
+        /// </summary>
+        public static string AppBarDownloadTitlle {
+            get {
+                return ResourceManager.GetString("AppBarDownloadTitlle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to play.
+        /// </summary>
+        public static string AppBarPlayTitle {
+            get {
+                return ResourceManager.GetString("AppBarPlayTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to refresh.
+        /// </summary>
+        public static string AppBarRefreshTitle {
+            get {
+                return ResourceManager.GetString("AppBarRefreshTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to settings.
+        /// </summary>
+        public static string AppBarSettingTitle {
+            get {
+                return ResourceManager.GetString("AppBarSettingTitle", resourceCulture);
             }
         }
         
@@ -79,7 +205,196 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post not deleted.
+        ///   Looks up a localized string similar to are you sure?.
+        /// </summary>
+        public static string AreYouSureTitle {
+            get {
+                return ResourceManager.GetString("AreYouSureTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to author.
+        /// </summary>
+        public static string AuthorTitle {
+            get {
+                return ResourceManager.GetString("AuthorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cancel.
+        /// </summary>
+        public static string CancelContextMenuTitle {
+            get {
+                return ResourceManager.GetString("CancelContextMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto backup.
+        /// </summary>
+        public static string ConfAutoBackup {
+            get {
+                return ResourceManager.GetString("ConfAutoBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to always create a backup to avoid data losing.
+        /// </summary>
+        public static string ConfAutoBackupDetails {
+            get {
+                return ResourceManager.GetString("ConfAutoBackupDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto queue post.
+        /// </summary>
+        public static string ConfAutoQueuePost {
+            get {
+                return ResourceManager.GetString("ConfAutoQueuePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto queue downloaded post to playlist after downloading.
+        /// </summary>
+        public static string ConfAutoQueuePostDetails {
+            get {
+                return ResourceManager.GetString("ConfAutoQueuePostDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto remove downloaded post.
+        /// </summary>
+        public static string ConfAutoRemoveDownloadedPost {
+            get {
+                return ResourceManager.GetString("ConfAutoRemoveDownloadedPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto remove downloaded post from download list.
+        /// </summary>
+        public static string ConfAutoRemoveDownloadedPostDetails {
+            get {
+                return ResourceManager.GetString("ConfAutoRemoveDownloadedPostDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto resume post.
+        /// </summary>
+        public static string ConfAutoResumePost {
+            get {
+                return ResourceManager.GetString("ConfAutoResumePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto resume previous playing postion if you accidentally quit app.
+        /// </summary>
+        public static string ConfAutoResumePostDetails {
+            get {
+                return ResourceManager.GetString("ConfAutoResumePostDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to download with wifi.
+        /// </summary>
+        public static string ConfDownloadWithWifi {
+            get {
+                return ResourceManager.GetString("ConfDownloadWithWifi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to just download when wifi connection available.
+        /// </summary>
+        public static string ConfDownloadWithWifiDetails {
+            get {
+                return ResourceManager.GetString("ConfDownloadWithWifiDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to configuration.
+        /// </summary>
+        public static string ConfigurationPageTitle {
+            get {
+                return ResourceManager.GetString("ConfigurationPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to keep screen on.
+        /// </summary>
+        public static string ConfKeepScreenOn {
+            get {
+                return ResourceManager.GetString("ConfKeepScreenOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to prevent screen turned off while playing post.
+        /// </summary>
+        public static string ConfKeepScreenOnDetails {
+            get {
+                return ResourceManager.GetString("ConfKeepScreenOnDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to play post directly in app or use default Windows Phone player.
+        /// </summary>
+        public static string ConfPlayPostInApDetails {
+            get {
+                return ResourceManager.GetString("ConfPlayPostInApDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to play post in app.
+        /// </summary>
+        public static string ConfPlayPostInApp {
+            get {
+                return ResourceManager.GetString("ConfPlayPostInApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to show as grid.
+        /// </summary>
+        public static string ConfShowAsGrid {
+            get {
+                return ResourceManager.GetString("ConfShowAsGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to show subscribed podcasts as grid or list view.
+        /// </summary>
+        public static string ConfShowAsGridDetails {
+            get {
+                return ResourceManager.GetString("ConfShowAsGridDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to deleted post.
+        /// </summary>
+        public static string DeletedDownloadedFile {
+            get {
+                return ResourceManager.GetString("DeletedDownloadedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to post not deleted.
         /// </summary>
         public static string ErrCouldNotDeleteStream {
             get {
@@ -88,7 +403,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podcast could not be found.
+        ///   Looks up a localized string similar to podcast could not be found.
         /// </summary>
         public static string ErrCouldNotFindPod {
             get {
@@ -97,7 +412,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post not found.
+        ///   Looks up a localized string similar to post not found.
         /// </summary>
         public static string ErrCouldNotFindStream {
             get {
@@ -106,7 +421,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post downloaded but could not be saved.
+        ///   Looks up a localized string similar to post downloaded but could not be saved.
         /// </summary>
         public static string ErrCouldNotSaveDownloadedStream {
             get {
@@ -115,7 +430,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There&apos;s an unknown error occured.
+        ///   Looks up a localized string similar to there&apos;s an unknown error occured.
         /// </summary>
         public static string ErrGenericError {
             get {
@@ -124,7 +439,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There&apos;s an error while get this podcast.
+        ///   Looks up a localized string similar to there&apos;s an error while get this podcast.
         /// </summary>
         public static string ErrGetPodError {
             get {
@@ -133,7 +448,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Network not found.
+        ///   Looks up a localized string similar to network not found.
         /// </summary>
         public static string ErrNetworkNotAvailable {
             get {
@@ -142,7 +457,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This podcast was not searched before.
+        ///   Looks up a localized string similar to this podcast was not searched before.
         /// </summary>
         public static string ErrNoOfflineSearchedPodFound {
             get {
@@ -151,7 +466,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not search for this podcast.
+        ///   Looks up a localized string similar to could not search for this podcast.
         /// </summary>
         public static string ErrNoOnlineSearchedPodFound {
             get {
@@ -160,7 +475,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There&apos;s no such post in play list.
+        ///   Looks up a localized string similar to there&apos;s no such post in play list.
         /// </summary>
         public static string ErrNoPlayingStreamFound {
             get {
@@ -169,7 +484,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No such podcast subscribed.
+        ///   Looks up a localized string similar to no such podcast subscribed.
         /// </summary>
         public static string ErrNoPodSubscribed {
             get {
@@ -178,7 +493,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No such post in downloading.
+        ///   Looks up a localized string similar to no such post in downloading.
         /// </summary>
         public static string ErrNoStreamDownloadingFound {
             get {
@@ -187,7 +502,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No download link found.
+        ///   Looks up a localized string similar to no download link found.
         /// </summary>
         public static string ErrNoStreamDownloadUri {
             get {
@@ -196,7 +511,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podcast was not found.
+        ///   Looks up a localized string similar to podcast was not found.
         /// </summary>
         public static string ErrPodPassedInNull {
             get {
@@ -205,7 +520,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This podcast is already subscribed.
+        ///   Looks up a localized string similar to this podcast is already subscribed.
         /// </summary>
         public static string ErrPodSubscribed {
             get {
@@ -214,7 +529,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You already requested to download this post.
+        ///   Looks up a localized string similar to you already requested to download this post.
         /// </summary>
         public static string ErrStreamAlreadyInDownloading {
             get {
@@ -223,11 +538,47 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This post already queued in play list.
+        ///   Looks up a localized string similar to this post already queued in play list.
         /// </summary>
         public static string ErrStreamAlreadyInPlayingList {
             get {
                 return ResourceManager.GetString("ErrStreamAlreadyInPlayingList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to genres.
+        /// </summary>
+        public static string GenresTitle {
+            get {
+                return ResourceManager.GetString("GenresTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to error while loading, please try again later.
+        /// </summary>
+        public static string LoadingErrorTitle {
+            get {
+                return ResourceManager.GetString("LoadingErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading....
+        /// </summary>
+        public static string LoadingTitle {
+            get {
+                return ResourceManager.GetString("LoadingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to there&apos;s no post selected to download....
+        /// </summary>
+        public static string MainPageDownloadStatus {
+            get {
+                return ResourceManager.GetString("MainPageDownloadStatus", resourceCulture);
             }
         }
         
@@ -237,6 +588,33 @@ namespace PodCricket.WP.Resources {
         public static string MainPageDownloadTitle {
             get {
                 return ResourceManager.GetString("MainPageDownloadTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pause.
+        /// </summary>
+        public static string MainPagePauseButtonTitle {
+            get {
+                return ResourceManager.GetString("MainPagePauseButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to play.
+        /// </summary>
+        public static string MainPagePlayButtonTitle {
+            get {
+                return ResourceManager.GetString("MainPagePlayButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to there&apos;s no post selected to play....
+        /// </summary>
+        public static string MainPagePlayStatus {
+            get {
+                return ResourceManager.GetString("MainPagePlayStatus", resourceCulture);
             }
         }
         
@@ -252,9 +630,27 @@ namespace PodCricket.WP.Resources {
         /// <summary>
         ///   Looks up a localized string similar to search.
         /// </summary>
+        public static string MainPageSearchButtonTitle {
+            get {
+                return ResourceManager.GetString("MainPageSearchButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to search.
+        /// </summary>
         public static string MainPageSearchTitle {
             get {
                 return ResourceManager.GetString("MainPageSearchTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ooops there&apos;s no subscribed pod.
+        /// </summary>
+        public static string MainPageSubscribedStatus {
+            get {
+                return ResourceManager.GetString("MainPageSubscribedStatus", resourceCulture);
             }
         }
         
@@ -268,7 +664,25 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podcast.
+        ///   Looks up a localized string similar to track time:.
+        /// </summary>
+        public static string MainPageTrackTimeTitle {
+            get {
+                return ResourceManager.GetString("MainPageTrackTimeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading....
+        /// </summary>
+        public static string OpeningTitle {
+            get {
+                return ResourceManager.GetString("OpeningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to podcast.
         /// </summary>
         public static string PodcastDetailsPageTitle {
             get {
@@ -277,11 +691,29 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post.
+        ///   Looks up a localized string similar to post.
         /// </summary>
         public static string PostDetailsPageTitle {
             get {
                 return ResourceManager.GetString("PostDetailsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to published.
+        /// </summary>
+        public static string PublishedTitle {
+            get {
+                return ResourceManager.GetString("PublishedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to this post was requested to download, do you want to retry?.
+        /// </summary>
+        public static string ReDownloadTitle {
+            get {
+                return ResourceManager.GetString("ReDownloadTitle", resourceCulture);
             }
         }
         
@@ -304,11 +736,119 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to error while searching, please try again later....
+        /// </summary>
+        public static string SearchingErrorTitle {
+            get {
+                return ResourceManager.GetString("SearchingErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to searching....
+        /// </summary>
+        public static string SearchingTitle {
+            get {
+                return ResourceManager.GetString("SearchingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to settings.
         /// </summary>
         public static string SettingsPageTitle {
             get {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to streamming....
+        /// </summary>
+        public static string StreammingTitle {
+            get {
+                return ResourceManager.GetString("StreammingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscribe successfully!.
+        /// </summary>
+        public static string SubscribeSuccessfullyTitle {
+            get {
+                return ResourceManager.GetString("SubscribeSuccessfullyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscribe.
+        /// </summary>
+        public static string SubscribeTitle {
+            get {
+                return ResourceManager.GetString("SubscribeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to add to download.
+        /// </summary>
+        public static string ToolkitAddToDownload {
+            get {
+                return ResourceManager.GetString("ToolkitAddToDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to add to play.
+        /// </summary>
+        public static string ToolkitAddToPlay {
+            get {
+                return ResourceManager.GetString("ToolkitAddToPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to delete downloaded file.
+        /// </summary>
+        public static string ToolkitDeleteDownloadedFile {
+            get {
+                return ResourceManager.GetString("ToolkitDeleteDownloadedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to remove.
+        /// </summary>
+        public static string ToolkitRemove {
+            get {
+                return ResourceManager.GetString("ToolkitRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unsubscribe successfully!.
+        /// </summary>
+        public static string UnsubscribeSuccessfullyTitle {
+            get {
+                return ResourceManager.GetString("UnsubscribeSuccessfullyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unsubscribe.
+        /// </summary>
+        public static string UnsubscribeTitle {
+            get {
+                return ResourceManager.GetString("UnsubscribeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to url.
+        /// </summary>
+        public static string UrlTitle {
+            get {
+                return ResourceManager.GetString("UrlTitle", resourceCulture);
             }
         }
     }
