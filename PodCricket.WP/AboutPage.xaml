@@ -44,8 +44,9 @@
             
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <TextBlock Style="{StaticResource PhoneTextLargeStyle}" 
-                       VerticalAlignment="Center"
-                        Text="{Binding Path=LocalizedResources.AbtDescription, Source={StaticResource LocalizedStrings}}"/>
+                    VerticalAlignment="Center"
+                    TextWrapping="Wrap"
+                    Text="{Binding Path=LocalizedResources.AbtDescription, Source={StaticResource LocalizedStrings}}"/>
                 
                 <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
                     VerticalAlignment="Center"
