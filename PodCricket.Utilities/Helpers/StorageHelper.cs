@@ -149,7 +149,6 @@ namespace PodCricket.Utilities.Helpers
         {
             try
             {
-
                 using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     if (isoStore.FileExists(destinationFile))
