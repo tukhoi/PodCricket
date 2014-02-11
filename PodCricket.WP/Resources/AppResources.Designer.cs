@@ -106,7 +106,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to updated on Feb 12 2014.
+        ///   Looks up a localized string similar to updated on Feb 13 2014.
         /// </summary>
         public static string AbtUpdateDate {
             get {
@@ -115,7 +115,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to version 1.1.
+        ///   Looks up a localized string similar to version 1.1.1.0.
         /// </summary>
         public static string AbtVersion {
             get {

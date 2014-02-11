@@ -249,7 +249,7 @@
     <value>takes the shortest way to your favourite podcasts</value>
   </data>
   <data name="AbtVersion" xml:space="preserve">
-    <value>version 1.1</value>
+    <value>version 1.1.1.0</value>
   </data>
   <data name="ConfAutoBackup" xml:space="preserve">
     <value>auto backup</value>
@@ -378,7 +378,7 @@
     <value>prevent screen turned off while playing post, this feature just turned on while you are listening</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
-    <value>updated on Feb 12 2014</value>
+    <value>updated on Feb 13 2014</value>
   </data>
   <data name="OpeningTitle" xml:space="preserve">
     <value>loading...</value>

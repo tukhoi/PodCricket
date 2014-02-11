@@ -581,7 +581,9 @@ namespace PodCricket.WP
 
             if (mediaElement.CurrentState == MediaElementState.Playing)
             {
-                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+                if (AppConfig.Instance().KeepScreenOn)
+                    PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+
                 _currentPlayingStreamPositionTimer.Start();
 
                 // add play position here
