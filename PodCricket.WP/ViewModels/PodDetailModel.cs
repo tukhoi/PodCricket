@@ -120,7 +120,7 @@ namespace PodCricket.WP.ViewModels
             switch (this.DownloadState)
             { 
                 case ApplicationServices.DownloadState.None:
-                    this.BackgroundColor = new SolidColorBrush(Colors.Black);
+                    this.BackgroundColor = new SolidColorBrush((Color)Application.Current.Resources["PhoneAccentColor"]);
                     break;
                 case ApplicationServices.DownloadState.Downloading:
                     this.BackgroundColor = new SolidColorBrush(Colors.Gray);

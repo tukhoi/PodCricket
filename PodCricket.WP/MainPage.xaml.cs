@@ -286,18 +286,25 @@ namespace PodCricket.WP
                 this.SetProgressIndicator(true, AppResources.SearchingTitle);
 
                 var result = await _podManager.SearchPod(txtSearch.Text);
-                if (result.HasError) return;
+                if (result.HasError)
+                {
+                    ToastMessage.Show(result.ErrorMessage());
+                    return;
+                }
 
                 _mainModel.ClearSearch();
                 result.Target.ForEach(p => _mainModel.AddSearch(new PodModel().GetFrom(p)));
 
                 MainPanorama.DataContext = _mainModel;
 
-                this.SetProgressIndicator(false);
+                
             }
             catch (Exception)
             {
                 ToastMessage.Show(AppResources.SearchingErrorTitle);
+            }
+            finally {
+                this.SetProgressIndicator(false);
             }
         }
 

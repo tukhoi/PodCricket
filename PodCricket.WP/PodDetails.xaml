@@ -59,11 +59,9 @@
                     Margin="0,0,0,0" 
                     Grid.Row="1" 
                     ItemsSource="{Binding StreamList}"
-                    Tap="llsPodStreamList_Tap"
-                    >
+                    Tap="llsPodStreamList_Tap">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderThickness="0,10,0,10" BorderBrush="Black">
                                 <Grid Background="{Binding BackgroundColor}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -81,7 +79,6 @@
                                         </toolkit:ContextMenu>
                                     </toolkit:ContextMenuService.ContextMenu>
                                 </Grid>
-                            </Border>
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector>

@@ -205,7 +205,6 @@
                                        FontSize="42"/>
                             <TextBlock Height="58" Grid.Row="1" Grid.Column="1" 
                                        Margin="0"
-                                       Foreground="White" 
                                        HorizontalAlignment="Left" 
                                        Name="songTime" 
                                        Text=""  

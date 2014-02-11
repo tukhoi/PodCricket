@@ -115,7 +115,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to version 1.1.1.0.
+        ///   Looks up a localized string similar to version 1.1.2.0.
         /// </summary>
         public static string AbtVersion {
             get {
