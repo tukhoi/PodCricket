@@ -383,4 +383,7 @@
   <data name="OpeningTitle" xml:space="preserve">
     <value>đang mở...</value>
   </data>
+  <data name="RateThisAppTitle" xml:space="preserve">
+    <value>xếp hạng ứng dụng này...</value>
+  </data>
 </root>

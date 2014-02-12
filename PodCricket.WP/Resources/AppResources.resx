@@ -383,4 +383,7 @@
   <data name="OpeningTitle" xml:space="preserve">
     <value>loading...</value>
   </data>
+  <data name="RateThisAppTitle" xml:space="preserve">
+    <value>rate this app...</value>
+  </data>
 </root>

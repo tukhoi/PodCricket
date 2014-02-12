@@ -72,23 +72,36 @@
                        Grid.ColumnSpan="2"
                         Margin="12,12,12,12"
                         Text="{Binding Path=LocalizedResources.AbtSlogan, Source={StaticResource LocalizedStrings}}"/>
+            
             <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
                        Grid.Row="2"
                        Grid.ColumnSpan="2"
                         Margin="12, 50,0,0"
                         Text="{Binding Path=LocalizedResources.AbtCreatedBy, Source={StaticResource LocalizedStrings}}"/>
+            
             <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
                        Grid.Row="3"
                        Grid.ColumnSpan="2"
                         Margin="12,0"
                         Text="davangsolutions@outlook.com"/>
-            <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
-                       Grid.Row="4"
-                       Grid.ColumnSpan="2"
+            
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
+                        VerticalAlignment="Bottom">
+            
+                <Button x:Name="btnRating"
+                        HorizontalAlignment="Left"
+                        Click="btnRating_Click">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Path=LocalizedResources.RateThisAppTitle, Source={StaticResource LocalizedStrings}}"
+                                   HorizontalAlignment="Center"/>
+                        <Image Source="Resources\rating.png" VerticalAlignment="Center" Stretch="Fill" Width="200" Height="40"/>
+                    </StackPanel>
+                </Button>
+            
+                <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
                         Margin="12"
-                        VerticalAlignment="Bottom"
                         Text="{Binding Path=LocalizedResources.AbtCopyright, Source={StaticResource LocalizedStrings}}"/>
-
+            </StackPanel>
         </Grid>
     </Grid>
 

@@ -709,6 +709,15 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to rate this app....
+        /// </summary>
+        public static string RateThisAppTitle {
+            get {
+                return ResourceManager.GetString("RateThisAppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to this post was requested to download, do you want to retry?.
         /// </summary>
         public static string ReDownloadTitle {
