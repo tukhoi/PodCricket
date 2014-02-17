@@ -131,6 +131,11 @@ namespace PodCricket.WP
             NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
         }
 
+        private void mnuHelp_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/HelpPage.xaml", UriKind.Relative));
+        }
+
         private async Task Reload()
         {
             //await _podManager.LoadSettings();
@@ -162,8 +167,14 @@ namespace PodCricket.WP
             aboutButton.IconUri = new Uri("/Assets/AppBar/like.png", UriKind.Relative);
             aboutButton.Click += new EventHandler(mnuAbout_Click);
 
+            var helpButton = new ApplicationBarIconButton();
+            helpButton.Text = AppResources.AppBarHelpTitle;
+            helpButton.IconUri = new Uri("/Assets/AppBar/questionmark.png", UriKind.Relative);
+            helpButton.Click += new EventHandler(mnuHelp_Click);
+
             ApplicationBar.Buttons.Add(settingButton);
             ApplicationBar.Buttons.Add(aboutButton);
+            ApplicationBar.Buttons.Add(helpButton);
         }
 
         #endregion

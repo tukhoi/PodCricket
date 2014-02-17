@@ -15,7 +15,7 @@
     shell:SystemTray.IsVisible="True"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:myToolkit="clr-namespace:PodCricket.Utilities.Toolkit;assembly=PodCricket.Utilities">
-
+    
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Panorama Control-->
 
@@ -177,6 +177,7 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="58"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -186,7 +187,15 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Height="Auto" Grid.Row="0" Grid.ColumnSpan="2" x:Name="txtPlayStatus" 
+                            <MediaElement Name="mediaElement" 
+                                          Grid.Row="0"
+                                          Grid.ColumnSpan="2"
+                                          Width="Auto"
+                                          Height="Auto"
+                                          BufferingTime="0:0:5" 
+                                          AutoPlay="True"/>
+                            
+                            <TextBlock Height="Auto" Grid.Row="1" Grid.ColumnSpan="2" x:Name="txtPlayStatus" 
                                        Margin="0"
                                        Style="{StaticResource PhoneTextSmallStyle}" 
                                        VerticalAlignment="Center"
@@ -194,7 +203,7 @@
                                        Text="{Binding Path=LocalizedResources.MainPagePlayStatus, Source={StaticResource LocalizedStrings}}" 
                                        Visibility="Visible"/>
 
-                            <TextBlock Height="58" Grid.Row="1" Grid.Column="0" 
+                            <TextBlock Height="58" Grid.Row="2" Grid.Column="0" 
                                        Margin="0"
                                        HorizontalAlignment="Left" 
                                        Name="txtTrackTimeCaption" 
@@ -203,7 +212,7 @@
                                        Width="208"  
                                        Style="{StaticResource PhoneTextTitle1Style}" 
                                        FontSize="42"/>
-                            <TextBlock Height="58" Grid.Row="1" Grid.Column="1" 
+                            <TextBlock Height="58" Grid.Row="2" Grid.Column="1" 
                                        Margin="0"
                                        HorizontalAlignment="Left" 
                                        Name="songTime" 
@@ -214,18 +223,13 @@
                                        Style="{StaticResource PhoneTextTitle1Style}" 
                                        FontSize="42" />
                         
-                            <MediaElement Name="mediaElement" 
-                                          Grid.Row="1"
-                                          Grid.ColumnSpan="2"
-                                          BufferingTime="0:0:5" 
-                                          AutoPlay="True"/>
-                        
                             <Slider x:Name="sldPlaying" 
-                                    Grid.Row="2" 
+                                    Margin="0"
+                                    Grid.Row="3" 
                                     Grid.ColumnSpan="2" ManipulationCompleted="sldPlaying_ManipulationCompleted" ManipulationStarted="sldPlaying_ManipulationStarted"/>
 
                             <Button Content="{Binding Path=LocalizedResources.MainPagePlayButtonTitle, Source={StaticResource LocalizedStrings}}"  
-                                    Grid.Row="3"
+                                    Grid.Row="4"
                                     Grid.ColumnSpan="2"
                                     Visibility="Collapsed"  
                                     Height="72" 
@@ -236,7 +240,7 @@
                                     Click="play_btn_Click" />
 
                             <Button Content="{Binding Path=LocalizedResources.MainPagePauseButtonTitle, Source={StaticResource LocalizedStrings}}" 
-                                    Grid.Row="3"
+                                    Grid.Row="4"
                                     Grid.ColumnSpan="2"
                                     Visibility="Collapsed"  
                                     Height="72" 

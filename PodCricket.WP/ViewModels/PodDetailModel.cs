@@ -95,6 +95,7 @@ namespace PodCricket.WP.ViewModels
 
         public Visibility  DownloadVisibility { get; set; }
         public SolidColorBrush BackgroundColor { get; set; }
+        public Visibility DeleteDownloadedVisibility { get; set; }
 
         public StreamModel GetFrom(PodCricket.ApplicationServices.Stream stream)
         {
@@ -117,20 +118,23 @@ namespace PodCricket.WP.ViewModels
                                     || stream.DownloadState == ApplicationServices.DownloadState.Downloading)
                                         ? Visibility.Collapsed : Visibility.Visible;
 
+            this.DeleteDownloadedVisibility = stream.DownloadState == ApplicationServices.DownloadState.Downloaded ? 
+                                                Visibility.Visible : Visibility.Collapsed;
+
             switch (this.DownloadState)
             { 
-                case ApplicationServices.DownloadState.None:
-                    this.BackgroundColor = new SolidColorBrush((Color)Application.Current.Resources["PhoneAccentColor"]);
-                    break;
+                //case ApplicationServices.DownloadState.None:
+                //    this.BackgroundColor = new SolidColorBrush((Color)Application.Current.Resources["PhoneAccentColor"]);
+                //    break;
                 case ApplicationServices.DownloadState.Downloading:
                     this.BackgroundColor = new SolidColorBrush(Colors.Gray);
                     break;
                 case ApplicationServices.DownloadState.Downloaded:
                     this.BackgroundColor = new SolidColorBrush(Colors.Green);
                     break;
-                default:
-                    this.BackgroundColor = new SolidColorBrush(Colors.Black);
-                    break;
+                //default:
+                //    this.BackgroundColor = new SolidColorBrush(Colors.Black);
+                //    break;
             }
 
             return this;

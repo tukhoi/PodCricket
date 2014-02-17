@@ -75,7 +75,7 @@
                                         <toolkit:ContextMenu BorderThickness="0" BorderBrush="White">
                                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ToolkitAddToDownload, Source={StaticResource LocalizedStrings}}" Click="btnDownload_Click"/>
                                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ToolkitAddToPlay, Source={StaticResource LocalizedStrings}}" Click="btnPlay_Click"/>
-                                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ToolkitDeleteDownloadedFile, Source={StaticResource LocalizedStrings}}" Click="btnDeleteDownloadedFile_Click"/>
+                                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ToolkitDeleteDownloadedFile, Source={StaticResource LocalizedStrings}}" Visibility="{Binding DeleteDownloadedVisibility}" Click="btnDeleteDownloadedFile_Click"/>
                                         </toolkit:ContextMenu>
                                     </toolkit:ContextMenuService.ContextMenu>
                                 </Grid>

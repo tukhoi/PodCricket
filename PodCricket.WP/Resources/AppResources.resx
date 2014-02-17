@@ -386,4 +386,13 @@
   <data name="RateThisAppTitle" xml:space="preserve">
     <value>rate this app...</value>
   </data>
+  <data name="ErrStreamHasNotDownloaded" xml:space="preserve">
+    <value>this post hasn't been downloaded</value>
+  </data>
+  <data name="AppBarHelpTitle" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="HelpPageTitle" xml:space="preserve">
+    <value>help</value>
+  </data>
 </root>

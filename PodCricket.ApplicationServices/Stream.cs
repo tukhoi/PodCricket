@@ -73,7 +73,9 @@ namespace PodCricket.ApplicationServices
                 this.Summary = string.Empty;
 
             var downloadLink = _syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
-                && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")));
+                && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")
+                || l.MediaType.StartsWith("video")
+                ));
             if (downloadLink != null)
                 this.DownloadUri = downloadLink.Uri;
             else this.DownloadUri = null;

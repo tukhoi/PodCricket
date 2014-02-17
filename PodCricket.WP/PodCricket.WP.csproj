@@ -101,6 +101,9 @@
     <Compile Include="Helper\AppResultExtensions.cs" />
     <Compile Include="Helper\MediaHelper.cs" />
     <Compile Include="Helper\ToastMessage.cs" />
+    <Compile Include="HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="PodDetails.xaml.cs">
       <DependentUpon>PodDetails.xaml</DependentUpon>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConfigurationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +172,7 @@
     <Content Include="Assets\AppBar\download.png" />
     <Content Include="Assets\AppBar\feature.settings.png" />
     <Content Include="Assets\AppBar\like.png" />
+    <Content Include="Assets\AppBar\questionmark.png" />
     <Content Include="Assets\AppBar\refresh.png" />
     <Content Include="Assets\AppBar\save.png" />
     <Content Include="Assets\AppBar\transport.play.png" />
@@ -173,6 +181,12 @@
     <Content Include="Resources\Direct-Podcast-icon.png" />
     <Content Include="Resources\flip-med.jpg" />
     <Content Include="Resources\flip-small.png" />
+    <Content Include="Resources\help\help-vi.html" />
+    <Content Include="Resources\help\help.html" />
+    <Content Include="Resources\help\podcast-details-vi.png" />
+    <Content Include="Resources\help\podcast-details.png" />
+    <Content Include="Resources\help\search-subscribed-vi.png" />
+    <Content Include="Resources\help\search-subscribed.png" />
     <Content Include="Resources\message.png" />
     <Content Include="Resources\rating.png" />
     <Content Include="Resources\tile-med.png" />

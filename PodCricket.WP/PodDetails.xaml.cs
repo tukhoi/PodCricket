@@ -154,6 +154,12 @@ namespace PodCricket.WP
 
             var streamResult = _podManager.FindStream(streamModel.Id);
             if (streamResult.HasError) return;
+            if (streamResult.Target.DownloadState == DownloadState.None)
+            {
+                ToastMessage.Show(AppResources.ErrStreamHasNotDownloaded);
+                return;
+            }
+
             var deleteResult = _podManager.DeleteDownloadedStream(streamResult.Target);
 
             if (deleteResult.HasError)

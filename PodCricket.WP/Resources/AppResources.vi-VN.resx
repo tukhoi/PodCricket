@@ -386,4 +386,13 @@
   <data name="RateThisAppTitle" xml:space="preserve">
     <value>xếp hạng ứng dụng này...</value>
   </data>
+  <data name="ErrStreamHasNotDownloaded" xml:space="preserve">
+    <value>bài này chưa được tải</value>
+  </data>
+  <data name="AppBarHelpTitle" xml:space="preserve">
+    <value>giúp đỡ</value>
+  </data>
+  <data name="HelpPageTitle" xml:space="preserve">
+    <value>giúp đỡ</value>
+  </data>
 </root>
