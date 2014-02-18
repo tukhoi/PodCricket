@@ -66,6 +66,9 @@ namespace PodCricket.WP.Helper
                 case ErrorCode.NetworkNotAvailable:
                     message = AppResources.ErrNetworkNotAvailable;
                     break;
+                case ErrorCode.LicenseRequiredForVideo:
+                    message = AppResources.ErrLicenseRequiredForVideo;
+                    break;
                 default:
                     message = AppResources.ErrGenericError;
                     break;

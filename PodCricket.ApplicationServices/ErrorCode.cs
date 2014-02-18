@@ -26,6 +26,7 @@ namespace PodCricket.ApplicationServices
         CouldNotFindStream,
         NoStreamDownloadUri,
         CouldNotDeleteStream,
-        NetworkNotAvailable
+        NetworkNotAvailable,
+        LicenseRequiredForVideo
     }
 }

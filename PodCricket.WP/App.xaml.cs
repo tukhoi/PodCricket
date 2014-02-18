@@ -13,6 +13,14 @@ using PodCricket.WP.ViewModels;
 using PodCricket.ApplicationServices;
 using System.Threading.Tasks;
 
+#if DEBUG
+using MockIAPLib;
+using Store = MockIAPLib;
+#else
+using Windows.ApplicationModel.Store;
+using Store = Windows.ApplicationModel.Store;
+#endif
+
 namespace PodCricket.WP
 {
     public partial class App : Application
@@ -23,6 +31,7 @@ namespace PodCricket.WP
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
         public static IdleDetectionMode _originalIdleDectectionMode;
+        public static Store.ListingInformation IAPListingInformation { get; private set; }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -61,6 +70,7 @@ namespace PodCricket.WP
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            SetupMockIAP();
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -245,6 +255,31 @@ namespace PodCricket.WP
 
                 throw;
             }
+        }
+
+        private void SetupMockIAP()
+        {
+#if DEBUG
+            MockIAP.Init();
+            MockIAP.RunInMockMode(true);
+            MockIAP.SetListingInformation(1, "en-us", "PodCricket Pro Version", "1", "PodCricket");
+
+            // Add some more items manually.
+
+            ProductListing p = new ProductListing
+            {
+                Name = "Pro Version",
+                ImageUri = new Uri("/Resources/4.png", UriKind.Relative),
+                ProductId = AppConfig.PRO_VERSION,
+                ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+                Keywords = new string[] { "pro" },
+                Description = "PodCricket Pro Version",
+                FormattedPrice = "1.0",
+                Tag = string.Empty
+            };
+
+            MockIAP.AddProductListing(AppConfig.PRO_VERSION, p);
+#endif
         }
     }
 }

@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Helper\AppResultExtensions.cs" />
     <Compile Include="Helper\MediaHelper.cs" />
+    <Compile Include="Helper\StoreManager.cs" />
     <Compile Include="Helper\ToastMessage.cs" />
     <Compile Include="HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
@@ -178,9 +179,6 @@
     <Content Include="Assets\AppBar\transport.play.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Resources\default-pod.png" />
-    <Content Include="Resources\Direct-Podcast-icon.png" />
-    <Content Include="Resources\flip-med.jpg" />
-    <Content Include="Resources\flip-small.png" />
     <Content Include="Resources\help\help-vi.html" />
     <Content Include="Resources\help\help.html" />
     <Content Include="Resources\help\podcast-details-vi.png" />
@@ -227,6 +225,10 @@
     <EmbeddedResource Include="Resources\AppResources.vi.resx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MockIAPLib\MockIAPLib.csproj">
+      <Project>{015E3DFE-EB56-429F-95EF-BAB5D41B23BE}</Project>
+      <Name>MockIAPLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PodCricket.ApplicationServices\PodCricket.ApplicationServices.csproj">
       <Project>{47DB9D98-02FF-4DA6-B99D-73C173C720EF}</Project>
       <Name>PodCricket.ApplicationServices</Name>

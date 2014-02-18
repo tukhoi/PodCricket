@@ -249,7 +249,7 @@
     <value>luyện nghe tiếng Anh, mọi lúc, mọi nơi</value>
   </data>
   <data name="AbtVersion" xml:space="preserve">
-    <value>phiên bản 1.1.2.0</value>
+    <value>phiên bản 1.2</value>
   </data>
   <data name="ConfAutoBackup" xml:space="preserve">
     <value>tự động sao lưu</value>
@@ -394,5 +394,14 @@
   </data>
   <data name="HelpPageTitle" xml:space="preserve">
     <value>giúp đỡ</value>
+  </data>
+  <data name="BtnProTitle" xml:space="preserve">
+    <value>Mua bản pro</value>
+  </data>
+  <data name="AbtVersionPro" xml:space="preserve">
+    <value>phiên bản pro 1.2</value>
+  </data>
+  <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
+    <value>phiên bản này không hỗ trợ video, hãy mua phiên bản pro từ màn hình giới thiệu...</value>
   </data>
 </root>

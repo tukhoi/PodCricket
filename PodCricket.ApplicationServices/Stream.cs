@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.Phone.BackgroundTransfer;
 using PodCricket.Utilities.Helpers;
 using PodCricket.ApplicationServices.Helper;
+using PodCricket.Utilities.AppLicense;
 
 namespace PodCricket.ApplicationServices
 {
@@ -24,13 +25,14 @@ namespace PodCricket.ApplicationServices
         public bool Listened { get; set; }
         public DateTime ListenDate { get; set; }
         public string LocalDownloadPath { get; set; }
+        public bool IsVideo { get; set; }
 
         //public BackgroundTransferRequest DownloadRequest { get; set; }
 
-        public Stream(SyndicationItem syndicationItem)
+        public Stream(SyndicationItem syndicationItem, ref bool licenseRequired)
         {
             _syndicationItem = syndicationItem;
-            LoadFromSyndicationItem();
+            LoadFromSyndicationItem(ref licenseRequired);
         }
 
         public void CheckDownloadedStreams()
@@ -48,34 +50,59 @@ namespace PodCricket.ApplicationServices
 
         #region Syndication properties
 
-        private void LoadFromSyndicationItem()
+        private void LoadFromSyndicationItem(ref bool licenseRequired)
         {
-            if (_syndicationItem == null) return;
+            UpdateFromSyndicationItem(_syndicationItem, ref licenseRequired);
+        }
 
-            this.Id = _syndicationItem.Id;
+        public void UpdateFromSyndicationItem(SyndicationItem syndicationItem, ref bool licenseRequired)
+        {
+            if (syndicationItem == null) return;
+
+            this.Id = syndicationItem.Id;
 
             var authors = new List<string>();
-            _syndicationItem.Authors.ForEach(a => authors.Add(a.Name));
+            syndicationItem.Authors.ForEach(a => authors.Add(a.Name));
 
             this.Authors = string.Join(",", authors.ToArray());
 
-            this.PublishDate = _syndicationItem == null ? string.Empty : _syndicationItem.PublishDate.ToString();   
+            this.PublishDate = syndicationItem == null ? string.Empty : syndicationItem.PublishDate.ToString();
 
-            var title = _syndicationItem.Title;
+            var title = syndicationItem.Title;
             if (title.Type.Equals("text"))
                 this.Title = title.Text;
             else this.Title = string.Empty;
 
-            var summary = _syndicationItem.Summary;
+            var summary = syndicationItem.Summary;
             if (summary != null && summary.Type.Equals("text"))
                 this.Summary = summary.Text;
             else
                 this.Summary = string.Empty;
 
-            var downloadLink = _syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
+            SyndicationLink downloadLink = null;
+
+            if (LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+            {
+                downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
                 && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")
-                || l.MediaType.StartsWith("video")
-                ));
+                || l.MediaType.StartsWith("video")));
+            }
+            else
+            {
+                downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
+                && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")));
+
+                if (downloadLink == null && syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType) &&
+                    l.MediaType.StartsWith("video")) != null)
+                    licenseRequired = true;
+            }
+
+            if (downloadLink == null && syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType) &&
+                    l.MediaType.StartsWith("video")) != null)
+                this.IsVideo = true;
+            else
+                this.IsVideo = false;
+
             if (downloadLink != null)
                 this.DownloadUri = downloadLink.Uri;
             else this.DownloadUri = null;
@@ -93,18 +120,32 @@ namespace PodCricket.ApplicationServices
 
     public class StreamList : List<Stream>
     {
-        public StreamList GetFrom(IEnumerable<SyndicationItem> items, Pod pod)
+        public StreamList GetFrom(IEnumerable<SyndicationItem> items, Pod pod, ref bool licenseRequired)
         {
-            items.ForEach(i => { 
-                var persistentStream = pod.StreamList.FirstOrDefault(x => x.Id == i.Id);
+            //items.ForEach(i => { 
+            //    var persistentStream = pod.StreamList.FirstOrDefault(x => x.Id == i.Id);
+            //    if (persistentStream == null)
+            //    {
+            //        persistentStream = new Stream(i, ref licenseRequired);
+            //        persistentStream.PodId = pod.Id;
+            //    }
+
+            //    base.Add(persistentStream);
+            //});
+
+            foreach (var item in items)
+            {
+                var persistentStream = pod.StreamList.FirstOrDefault(x => x.Id == item.Id);
                 if (persistentStream == null)
                 {
-                    persistentStream = new Stream(i);
+                    persistentStream = new Stream(item, ref licenseRequired);
                     persistentStream.PodId = pod.Id;
                 }
+                else
+                    persistentStream.UpdateFromSyndicationItem(item, ref licenseRequired);
 
                 base.Add(persistentStream);
-            });
+            }
 
             return this;
         }

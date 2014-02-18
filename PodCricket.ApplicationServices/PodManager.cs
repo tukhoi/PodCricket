@@ -18,6 +18,7 @@ using Windows.Storage;
 using Microsoft.Phone.BackgroundTransfer;
 using PodCricket.Utilities.Toolkit;
 using PodCricket.ApplicationServices.Helper;
+using PodCricket.Utilities.AppLicense;
 
 namespace PodCricket.ApplicationServices
 {
@@ -133,14 +134,17 @@ namespace PodCricket.ApplicationServices
                 var reader = XmlReader.Create(stream);
                 var feed = SyndicationFeed.Load(reader);
 
-                //persistentPod.StreamList.Clear();
-                persistentPod.StreamList = new StreamList().GetFrom(feed.Items, persistentPod);
+                bool licenseRequired = false;
+                persistentPod.StreamList = new StreamList().GetFrom(feed.Items, persistentPod, ref licenseRequired);
 
-                //try { await SavePodMap(); }
-                //catch { throw; }
+                if (licenseRequired)
+                {
+                    persistentPod.IsVideo = true;
+                    await SavePodMapAsync();
+                    return new AppResult<bool>(true, ErrorCode.LicenseRequiredForVideo);
+                }
 
                 await SavePodMapAsync();
-
                 return new AppResult<bool>(true);
             }
             catch (Exception)
@@ -171,6 +175,8 @@ namespace PodCricket.ApplicationServices
         public AppResult<bool> QueueToDownload(Stream stream, bool retry = false)
         {
             if (stream == null) return new AppResult<bool>(ErrorCode.CouldNotFindStream);
+            if (stream.DownloadUri == null && stream.IsVideo && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+                return new AppResult<bool>(ErrorCode.LicenseRequiredForVideo);
             if (stream.DownloadUri == null) return new AppResult<bool>(ErrorCode.NoStreamDownloadUri);
 
             if (retry)
@@ -295,6 +301,8 @@ namespace PodCricket.ApplicationServices
         {
             if (_playQueue.Contains(stream))
                 return new AppResult<bool>(ErrorCode.StreamAlreadyInPlayingList);
+            if (stream.DownloadUri == null && stream.IsVideo && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+                return new AppResult<bool>(ErrorCode.LicenseRequiredForVideo);
 
             _playQueue.Add(stream);
             return new AppResult<bool>(true);

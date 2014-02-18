@@ -16,6 +16,7 @@ namespace PodCricket.WP.Helper
             title = AppResources.ApplicationTitle;
 
             ToastPrompt toast = new ToastPrompt();
+            toast.TextWrapping = System.Windows.TextWrapping.Wrap;
             toast.Title = title;
             toast.Message = message;
             toast.FontSize = 20;

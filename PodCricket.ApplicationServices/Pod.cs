@@ -24,6 +24,7 @@ namespace PodCricket.ApplicationServices
         public string DisplayUrl { get; set; }
         public string FeedUrl { get; set; }
         public string Genres { get; set; }
+        public bool IsVideo { get; set; }
 
         public StreamList StreamList { get; set; }
 

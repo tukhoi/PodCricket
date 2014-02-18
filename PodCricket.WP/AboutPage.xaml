@@ -49,6 +49,7 @@
                     Text="{Binding Path=LocalizedResources.AbtDescription, Source={StaticResource LocalizedStrings}}"/>
                 
                 <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
+                           x:Name="abtVersion"
                     VerticalAlignment="Center"
                     Margin="12,0,12,0"
                     TextWrapping="Wrap"
@@ -88,7 +89,14 @@
             <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
                         VerticalAlignment="Bottom">
             
+                <Button x:Name="btnPro"
+                        Width="250"
+                        HorizontalAlignment="Left"
+                        Content="{Binding Path=LocalizedResources.BtnProTitle, Source={StaticResource LocalizedStrings}}"
+                        Click="btnPro_Click"/>
+                
                 <Button x:Name="btnRating"
+                        Width="250"
                         HorizontalAlignment="Left"
                         Click="btnRating_Click">
                     <StackPanel Orientation="Vertical">

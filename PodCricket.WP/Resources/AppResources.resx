@@ -249,7 +249,7 @@
     <value>takes the shortest way to your favourite podcasts</value>
   </data>
   <data name="AbtVersion" xml:space="preserve">
-    <value>version 1.1.2.0</value>
+    <value>version 1.2</value>
   </data>
   <data name="ConfAutoBackup" xml:space="preserve">
     <value>auto backup</value>
@@ -394,5 +394,14 @@
   </data>
   <data name="HelpPageTitle" xml:space="preserve">
     <value>help</value>
+  </data>
+  <data name="BtnProTitle" xml:space="preserve">
+    <value>Buy pro version</value>
+  </data>
+  <data name="AbtVersionPro" xml:space="preserve">
+    <value>pro version 1.1.2.0</value>
+  </data>
+  <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
+    <value>this version doesn't support video, please purchase pro version from about screen...</value>
   </data>
 </root>

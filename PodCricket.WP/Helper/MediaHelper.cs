@@ -20,7 +20,10 @@ namespace PodCricket.WP.Helper
                     mediaElement.SetSource(localPlayStream);
             }
             else
+            {
                 mediaElement.Source = streamModel.DownloadUri;
+                
+            }
         }
 
         public static void BindSourceUri(MediaPlayerLauncher mediaLauncher, StreamModel streamModel)

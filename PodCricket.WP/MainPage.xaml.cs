@@ -592,7 +592,6 @@ namespace PodCricket.WP
                 _currentPlayingStreamPositionTimer.Stop();
                 this.SetProgressIndicator(true, AppResources.StreammingTitle);
 
-                _currentTrackLastKnownPosition = LoadCurrentLastKnownPostionOfCurrentStream();
             }
             else
                 this.SetProgressIndicator(false);
@@ -626,7 +625,9 @@ namespace PodCricket.WP
                 play_btn.IsHitTestVisible = false;
                 pause_btn.IsHitTestVisible = true;
 
-                mediaElement.Position = TimeSpan.FromMinutes(_currentTrackLastKnownPosition);
+                _currentTrackLastKnownPosition = LoadCurrentLastKnownPostionOfCurrentStream();
+                if (_currentTrackLastKnownPosition > 0)
+                    mediaElement.Position = TimeSpan.FromMinutes(_currentTrackLastKnownPosition);
             }
             else
             {

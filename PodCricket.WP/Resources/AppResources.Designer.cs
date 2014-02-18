@@ -115,11 +115,20 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to version 1.1.2.0.
+        ///   Looks up a localized string similar to version 1.2.
         /// </summary>
         public static string AbtVersion {
             get {
                 return ResourceManager.GetString("AbtVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pro version 1.1.2.0.
+        /// </summary>
+        public static string AbtVersionPro {
+            get {
+                return ResourceManager.GetString("AbtVersionPro", resourceCulture);
             }
         }
         
@@ -228,6 +237,15 @@ namespace PodCricket.WP.Resources {
         public static string AuthorTitle {
             get {
                 return ResourceManager.GetString("AuthorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buy pro version.
+        /// </summary>
+        public static string BtnProTitle {
+            get {
+                return ResourceManager.GetString("BtnProTitle", resourceCulture);
             }
         }
         
@@ -453,6 +471,15 @@ namespace PodCricket.WP.Resources {
         public static string ErrGetPodError {
             get {
                 return ResourceManager.GetString("ErrGetPodError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to this version doesn&apos;t support video, please purchase pro version from about screen....
+        /// </summary>
+        public static string ErrLicenseRequiredForVideo {
+            get {
+                return ResourceManager.GetString("ErrLicenseRequiredForVideo", resourceCulture);
             }
         }
         
