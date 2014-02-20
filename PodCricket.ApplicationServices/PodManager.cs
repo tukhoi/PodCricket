@@ -136,15 +136,12 @@ namespace PodCricket.ApplicationServices
 
                 bool licenseRequired = false;
                 persistentPod.StreamList = new StreamList().GetFrom(feed.Items, persistentPod, ref licenseRequired);
-
-                if (licenseRequired)
-                {
-                    persistentPod.IsVideo = true;
-                    await SavePodMapAsync();
-                    return new AppResult<bool>(true, ErrorCode.LicenseRequiredForVideo);
-                }
-
+                persistentPod.IsVideo = licenseRequired;
                 await SavePodMapAsync();
+
+                if (licenseRequired && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+                    return new AppResult<bool>(true, ErrorCode.LicenseRequiredForVideo);
+
                 return new AppResult<bool>(true);
             }
             catch (Exception)
@@ -175,7 +172,7 @@ namespace PodCricket.ApplicationServices
         public AppResult<bool> QueueToDownload(Stream stream, bool retry = false)
         {
             if (stream == null) return new AppResult<bool>(ErrorCode.CouldNotFindStream);
-            if (stream.DownloadUri == null && stream.IsVideo && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+            if (stream.IsVideo && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
                 return new AppResult<bool>(ErrorCode.LicenseRequiredForVideo);
             if (stream.DownloadUri == null) return new AppResult<bool>(ErrorCode.NoStreamDownloadUri);
 
@@ -301,7 +298,7 @@ namespace PodCricket.ApplicationServices
         {
             if (_playQueue.Contains(stream))
                 return new AppResult<bool>(ErrorCode.StreamAlreadyInPlayingList);
-            if (stream.DownloadUri == null && stream.IsVideo && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+            if (stream.IsVideo && !LicenseHelper.Purchased(AppConfig.PRO_VERSION))
                 return new AppResult<bool>(ErrorCode.LicenseRequiredForVideo);
 
             _playQueue.Add(stream);

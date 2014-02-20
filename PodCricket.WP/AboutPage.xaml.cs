@@ -11,6 +11,7 @@ using Microsoft.Phone.Tasks;
 using PodCricket.Utilities.AppLicense;
 using PodCricket.ApplicationServices;
 using PodCricket.WP.Resources;
+using PodCricket.Utilities.Extensions;
 
 #if DEBUG
 using MockIAPLib;
@@ -42,27 +43,31 @@ namespace PodCricket.WP
             oRateTask.Show();
         }
 
-        private async void btnPro_Click(object sender, RoutedEventArgs e)
+        private void btnPro_Click(object sender, RoutedEventArgs e)
         {
-            if (!LicenseHelper.Purchased(AppConfig.PRO_VERSION))
-            {
-                try
-                {
-                    ListingInformation productListing = await Store.CurrentApp.LoadListingInformationAsync();
-                    if (productListing != null && productListing.ProductListings.ContainsKey(AppConfig.PRO_VERSION))
-                    {
-                        string proProduct = productListing.ProductListings[AppConfig.PRO_VERSION].ProductId;
-                        string receipt = await Store.CurrentApp.RequestProductPurchaseAsync(proProduct, false);
+            LicenseHelper.PurchaseProduct(AppConfig.PRO_VERSION);
 
-                        Binding();
-                        CurrentApp.ReportProductFulfillment(AppConfig.PRO_VERSION);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //ToastMessage.Show();
-                }
-            }
+            Binding();
+
+            //if (!LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+            //{
+            //    try
+            //    {
+            //        ListingInformation productListing = await Store.CurrentApp.LoadListingInformationAsync();
+            //        if (productListing != null && productListing.ProductListings.ContainsKey(AppConfig.PRO_VERSION))
+            //        {
+            //            string proProduct = productListing.ProductListings[AppConfig.PRO_VERSION].ProductId;
+            //            string receipt = await Store.CurrentApp.RequestProductPurchaseAsync(proProduct, false);
+
+            //            Binding();
+            //            CurrentApp.ReportProductFulfillment(AppConfig.PRO_VERSION);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        //ToastMessage.Show();
+            //    }
+            //}
         }
 
         private void Binding()
@@ -77,6 +82,15 @@ namespace PodCricket.WP
             {
                 btnPro.Visibility = System.Windows.Visibility.Visible;
                 abtVersion.Text = AppResources.AbtVersion;
+            }
+        }
+
+        private void OnFlick(object sender, FlickGestureEventArgs e)
+        {
+            if (e.Direction == System.Windows.Controls.Orientation.Horizontal)
+            {
+                if (e.HorizontalVelocity > 0)
+                    this.BackToPreviousPage();
             }
         }
     }

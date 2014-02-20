@@ -106,7 +106,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to updated on Feb 13 2014.
+        ///   Looks up a localized string similar to updated on Feb 24 2014.
         /// </summary>
         public static string AbtUpdateDate {
             get {
@@ -124,7 +124,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to pro version 1.1.2.0.
+        ///   Looks up a localized string similar to pro version 1.2.
         /// </summary>
         public static string AbtVersionPro {
             get {
@@ -750,6 +750,42 @@ namespace PodCricket.WP.Resources {
         public static string PostDetailsPageTitle {
             get {
                 return ResourceManager.GetString("PostDetailsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to want to play video?.
+        /// </summary>
+        public static string ProLicenseCaption {
+            get {
+                return ResourceManager.GetString("ProLicenseCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to get pro license.
+        /// </summary>
+        public static string ProLicenseLeftButton {
+            get {
+                return ResourceManager.GetString("ProLicenseLeftButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cancel.
+        /// </summary>
+        public static string ProLicenseRightButton {
+            get {
+                return ResourceManager.GetString("ProLicenseRightButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to this standard version doesn&apos;t support video playing, you need to purchase pro license for it....
+        /// </summary>
+        public static string ProLicenseTitle {
+            get {
+                return ResourceManager.GetString("ProLicenseTitle", resourceCulture);
             }
         }
         

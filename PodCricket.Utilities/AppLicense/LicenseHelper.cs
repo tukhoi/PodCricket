@@ -25,5 +25,24 @@ namespace PodCricket.Utilities.AppLicense
         {
             return Store.CurrentApp.LicenseInformation.ProductLicenses[productId];
         }
+
+        public static async void PurchaseProduct(string productId)
+        { 
+            if (Purchased(productId)) return;
+
+            try
+            {
+                ListingInformation productListing = await Store.CurrentApp.LoadListingInformationAsync();
+                if (productListing != null && productListing.ProductListings.ContainsKey(productId))
+                {
+                    string proProduct = productListing.ProductListings[productId].ProductId;
+                    string receipt = await Store.CurrentApp.RequestProductPurchaseAsync(proProduct, false);
+
+                    CurrentApp.ReportProductFulfillment(productId);
+                }
+            }
+            catch(Exception)
+            {}
+        }
     }
 }

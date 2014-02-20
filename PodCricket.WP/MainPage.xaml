@@ -224,11 +224,13 @@
                                        FontSize="42" />
                         
                             <Slider x:Name="sldPlaying" 
-                                    Margin="0"
+                                    Height="Auto"
+                                    Margin="-12, 0, 0, 0"
                                     Grid.Row="3" 
                                     Grid.ColumnSpan="2" ManipulationCompleted="sldPlaying_ManipulationCompleted" ManipulationStarted="sldPlaying_ManipulationStarted"/>
 
                             <Button Content="{Binding Path=LocalizedResources.MainPagePlayButtonTitle, Source={StaticResource LocalizedStrings}}"  
+                                    Margin="-12,0,0,0"
                                     Grid.Row="4"
                                     Grid.ColumnSpan="2"
                                     Visibility="Collapsed"  
@@ -240,6 +242,7 @@
                                     Click="play_btn_Click" />
 
                             <Button Content="{Binding Path=LocalizedResources.MainPagePauseButtonTitle, Source={StaticResource LocalizedStrings}}" 
+                                    Margin="-12,0,0,0"
                                     Grid.Row="4"
                                     Grid.ColumnSpan="2"
                                     Visibility="Collapsed"  
@@ -258,7 +261,7 @@
                                 x:Name="llsPlayList"
                                 Grid.Row="3"
                                 LayoutMode="List"
-                                Margin="12,0,12,0"
+                                Margin="0,0,0,0"
                                 ItemsSource="{Binding PlayingList}">
                                 <phone:LongListSelector.ItemTemplate>
                                     <DataTemplate>

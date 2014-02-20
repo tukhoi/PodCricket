@@ -378,7 +378,7 @@
     <value>prevent screen turned off while playing post, this feature just turned on while you are listening</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
-    <value>updated on Feb 13 2014</value>
+    <value>updated on Feb 24 2014</value>
   </data>
   <data name="OpeningTitle" xml:space="preserve">
     <value>loading...</value>
@@ -399,9 +399,21 @@
     <value>Buy pro version</value>
   </data>
   <data name="AbtVersionPro" xml:space="preserve">
-    <value>pro version 1.1.2.0</value>
+    <value>pro version 1.2</value>
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>this version doesn't support video, please purchase pro version from about screen...</value>
+  </data>
+  <data name="ProLicenseCaption" xml:space="preserve">
+    <value>want to play video?</value>
+  </data>
+  <data name="ProLicenseLeftButton" xml:space="preserve">
+    <value>get pro license</value>
+  </data>
+  <data name="ProLicenseRightButton" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="ProLicenseTitle" xml:space="preserve">
+    <value>this standard version doesn't support video playing, you need to purchase pro license for it...</value>
   </data>
 </root>

@@ -5,7 +5,7 @@
     <Language code="vi" />
     <Language code="vi-VN" />
   </Languages>
-  <App xmlns="" ProductID="{ea28f10a-c7cf-44ec-8e17-9aedded22ff9}" Title="PodCricket" RuntimeType="Silverlight" Version="1.1.2.0" Genre="apps.normal" Author="K$" Description="takes the shortest way to your favourite podcasts..." Publisher="DaVang Solutions" PublisherID="{f0954098-8984-4926-8f5f-020c294ce928}">
+  <App xmlns="" ProductID="{ea28f10a-c7cf-44ec-8e17-9aedded22ff9}" Title="PodCricket" RuntimeType="Silverlight" Version="1.2" Genre="apps.normal" Author="K$" Description="takes the shortest way to your favourite podcasts..." Publisher="DaVang Solutions" PublisherID="{f0954098-8984-4926-8f5f-020c294ce928}">
     <IconPath IsRelative="true" IsResource="false">Resources\default-pod.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />

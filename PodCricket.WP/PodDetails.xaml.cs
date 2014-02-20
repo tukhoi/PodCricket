@@ -41,7 +41,7 @@ namespace PodCricket.WP
 
             if (!ConnectivityHelper.NetworkAvailable())
             {
-                ToastMessage.Show(AppResources.ErrNetworkNotAvailable);
+                Messenger.ShowToast(AppResources.ErrNetworkNotAvailable);
                 return;
             }
 
@@ -54,7 +54,10 @@ namespace PodCricket.WP
                 var refreshResult = await _podManager.GetStreamList(result.Target);
 
                 if (refreshResult.HasError)
-                    ToastMessage.Show(refreshResult.ErrorMessage());
+                    if (refreshResult.Error == ErrorCode.LicenseRequiredForVideo)
+                        Messenger.ShowBuyLicense();
+                    else
+                        Messenger.ShowToast(refreshResult.ErrorMessage());
 
                 _model = new PodDetailModel().GetFrom(result.Target);
 
@@ -62,7 +65,7 @@ namespace PodCricket.WP
             }
             catch (Exception)
             {
-                ToastMessage.Show(AppResources.LoadingErrorTitle);
+                Messenger.ShowToast(AppResources.LoadingErrorTitle);
             }
             this.SetProgressIndicator(false);
         }
@@ -91,7 +94,7 @@ namespace PodCricket.WP
                     return;
             }
 
-            ToastMessage.Show(message);
+            Messenger.ShowToast(message);
             Binding();
         }
 
@@ -110,19 +113,30 @@ namespace PodCricket.WP
 
             var queueResult = _podManager.QueueToDownload(stream);
             if (queueResult.HasError)
+            {
                 if (queueResult.Error == ErrorCode.StreamAlreadyInDownloading &&
                     MessageBox.Show(AppResources.ReDownloadTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
                     queueResult = _podManager.QueueToDownload(stream, true);
-                else
-                    ToastMessage.Show(queueResult.ErrorMessage());
-
-            if (!queueResult.HasError)
+                    if (queueResult.HasError)
+                        Messenger.ShowToast(queueResult.ErrorMessage());
+                    else
+                        Messenger.ShowToast(AppResources.AddedToDownloadTitle);
+                    return;
+                }
+                else 
+                    if (queueResult.Error == ErrorCode.LicenseRequiredForVideo)
+                    {
+                        Messenger.ShowBuyLicense();
+                    }
+                    else
+                        Messenger.ShowToast(queueResult.ErrorMessage());
+            }
+            else// if (!queueResult.HasError)
             {
-                ToastMessage.Show(AppResources.AddedToDownloadTitle);
+                Messenger.ShowToast(AppResources.AddedToDownloadTitle);
                 Binding();
             }
-            else
-                ToastMessage.Show(queueResult.ErrorMessage());
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -140,9 +154,12 @@ namespace PodCricket.WP
 
             var queueResult = _podManager.QueueToPlay(stream);
             if (!queueResult.HasError)
-                ToastMessage.Show(AppResources.AddedToPlayListTitle);
+                Messenger.ShowToast(AppResources.AddedToPlayListTitle);
             else
-                ToastMessage.Show(queueResult.ErrorMessage());
+                if (queueResult.Error == ErrorCode.LicenseRequiredForVideo)
+                    Messenger.ShowBuyLicense();
+                else
+                    Messenger.ShowToast(queueResult.ErrorMessage());
         }
 
         private void btnDeleteDownloadedFile_Click(object sender, RoutedEventArgs e)
@@ -156,17 +173,17 @@ namespace PodCricket.WP
             if (streamResult.HasError) return;
             if (streamResult.Target.DownloadState == DownloadState.None)
             {
-                ToastMessage.Show(AppResources.ErrStreamHasNotDownloaded);
+                Messenger.ShowToast(AppResources.ErrStreamHasNotDownloaded);
                 return;
             }
 
             var deleteResult = _podManager.DeleteDownloadedStream(streamResult.Target);
 
             if (deleteResult.HasError)
-                ToastMessage.Show(deleteResult.ErrorMessage());
+                Messenger.ShowToast(deleteResult.ErrorMessage());
             else
             {
-                ToastMessage.Show(AppResources.DeletedDownloadedFile);
+                Messenger.ShowToast(AppResources.DeletedDownloadedFile);
                 Binding();
             }
         }

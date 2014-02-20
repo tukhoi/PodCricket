@@ -42,7 +42,7 @@
                 <toolkit:GestureListener Flick="OnFlick"/>
             </toolkit:GestureService.GestureListener>
 
-            <Grid Margin="0,0,0,0">
+            <Grid Margin="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -50,9 +50,9 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" x:Name="txtName" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" Height="Auto"/>
+                <TextBlock Margin="0" Grid.Row="0" x:Name="txtName" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" Height="Auto"/>
 
-                <phone:WebBrowser Grid.Row="2" Margin="0,0,0,0" cxi:WebBrowserHelper.Html="{Binding Summary}"/>
+                <phone:WebBrowser Grid.Row="2" Margin="0" cxi:WebBrowserHelper.Html="{Binding Summary}"/>
                 <TextBlock Grid.Row="3" Text="{Binding PublishDate}" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"/>
             </Grid>
         </Grid>

@@ -79,33 +79,34 @@ namespace PodCricket.ApplicationServices
             else
                 this.Summary = string.Empty;
 
+            
+
+            //if (LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+            //{
+            //    downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
+            //    && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")
+            //    || l.MediaType.StartsWith("video")));
+            //}
+            //else
+            //{
+            //    downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
+            //    && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")));
+
+            //    if (downloadLink == null && syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType) &&
+            //        l.MediaType.StartsWith("video")) != null)
+            //        licenseRequired = true;
+            //}
+
             SyndicationLink downloadLink = null;
+            downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
+                && (l.MediaType.StartsWith("audio") || l.MediaType.StartsWith("video")));
+            this.DownloadUri = downloadLink.Uri;
 
-            if (LicenseHelper.Purchased(AppConfig.PRO_VERSION))
-            {
-                downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
-                && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")
-                || l.MediaType.StartsWith("video")));
-            }
-            else
-            {
-                downloadLink = syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType)
-                && (AppConfig.STREAM_SUPPORTED_TYPES.Contains(l.MediaType) || l.MediaType.StartsWith("audio")));
+            this.IsVideo = downloadLink != null 
+                && syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType) 
+                    && l.MediaType.StartsWith("video")) != null ? true: false;
 
-                if (downloadLink == null && syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType) &&
-                    l.MediaType.StartsWith("video")) != null)
-                    licenseRequired = true;
-            }
-
-            if (downloadLink == null && syndicationItem.Links.FirstOrDefault(l => !string.IsNullOrEmpty(l.MediaType) &&
-                    l.MediaType.StartsWith("video")) != null)
-                this.IsVideo = true;
-            else
-                this.IsVideo = false;
-
-            if (downloadLink != null)
-                this.DownloadUri = downloadLink.Uri;
-            else this.DownloadUri = null;
+            licenseRequired = this.IsVideo;
         }
 
         public string Id { get; set; }

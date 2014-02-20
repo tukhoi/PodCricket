@@ -76,9 +76,12 @@ namespace PodCricket.WP
             
             var queueResult = _podManager.QueueToPlay(stream);
             if (!queueResult.HasError)
-                ToastMessage.Show(AppResources.AddedToPlayListTitle);
+                Messenger.ShowToast(AppResources.AddedToPlayListTitle);
             else
-                ToastMessage.Show(queueResult.ErrorMessage());
+                if (queueResult.Error == ErrorCode.LicenseRequiredForVideo)
+                    Messenger.ShowBuyLicense();
+                else
+                    Messenger.ShowToast(queueResult.ErrorMessage());
         }
 
         private void mnuDownload_Click(object sender, EventArgs e)
@@ -88,7 +91,7 @@ namespace PodCricket.WP
 
             var podResult = _podManager.GetPod(_podDetailModel.Id);
             if (podResult.HasError){
-                ToastMessage.Show(podResult.ErrorMessage());
+                Messenger.ShowToast(podResult.ErrorMessage());
                 return;
             }
 
@@ -98,16 +101,41 @@ namespace PodCricket.WP
 
             var queueResult = _podManager.QueueToDownload(stream);
             if (queueResult.HasError)
+            {
                 if (queueResult.Error == ErrorCode.StreamAlreadyInDownloading &&
                     MessageBox.Show(AppResources.ReDownloadTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
                     queueResult = _podManager.QueueToDownload(stream, true);
+                    if (queueResult.HasError)
+                        Messenger.ShowToast(queueResult.ErrorMessage());
+                    else
+                        Messenger.ShowToast(AppResources.AddedToDownloadTitle);
+                    return;
+                }
                 else
-                ToastMessage.Show(queueResult.ErrorMessage());
+                    if (queueResult.Error == ErrorCode.LicenseRequiredForVideo)
+                    {
+                        Messenger.ShowBuyLicense();
+                    }
+                    else
+                        Messenger.ShowToast(queueResult.ErrorMessage());
+            }
+            else// if (!queueResult.HasError)
+            {
+                Messenger.ShowToast(AppResources.AddedToDownloadTitle);
+            }
+
+            //if (queueResult.HasError)
+            //    if (queueResult.Error == ErrorCode.StreamAlreadyInDownloading &&
+            //        MessageBox.Show(AppResources.ReDownloadTitle, AppResources.ApplicationTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            //        queueResult = _podManager.QueueToDownload(stream, true);
+            //    else
+            //    Messenger.ShowToast(queueResult.ErrorMessage());
             
-            if (!queueResult.HasError)
-                ToastMessage.Show(AppResources.AddedToDownloadTitle);
-            else
-                ToastMessage.Show(queueResult.ErrorMessage());
+            //if (!queueResult.HasError)
+            //    Messenger.ShowToast(AppResources.AddedToDownloadTitle);
+            //else
+            //    Messenger.ShowToast(queueResult.ErrorMessage());
         }
 
         private void LoadNextStream()

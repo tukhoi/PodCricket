@@ -21,7 +21,7 @@ namespace PodCricket.ApplicationServices
         public static string TEMP_DOWNLOAD_ROOT = "shared/transfers/";
         public static string PODCAST_DIRECTORY = "shared/media/";
 
-        public static string PRO_VERSION = "Pro Version";
+        public static string PRO_VERSION = "ProVersion";
 
         public static bool Loaded = false;
 

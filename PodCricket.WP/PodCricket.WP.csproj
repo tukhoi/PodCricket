@@ -101,7 +101,7 @@
     <Compile Include="Helper\AppResultExtensions.cs" />
     <Compile Include="Helper\MediaHelper.cs" />
     <Compile Include="Helper\StoreManager.cs" />
-    <Compile Include="Helper\ToastMessage.cs" />
+    <Compile Include="Helper\Messenger.cs" />
     <Compile Include="HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
     </Compile>

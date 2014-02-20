@@ -318,7 +318,7 @@
     <value>đăng ký</value>
   </data>
   <data name="SubscribeSuccessfullyTitle" xml:space="preserve">
-    <value>đăng ký thành công!</value>
+    <value>đăng ký xong!</value>
   </data>
   <data name="UnsubscribeTitle" xml:space="preserve">
     <value>hủy đăng ký</value>
@@ -336,7 +336,7 @@
     <value>bài này đã được tải, bạn muốn tải lại?</value>
   </data>
   <data name="UnsubscribeSuccessfullyTitle" xml:space="preserve">
-    <value>hủy đăng ký thành công</value>
+    <value>hủy đăng ký xong!</value>
   </data>
   <data name="AuthorTitle" xml:space="preserve">
     <value>tác giả</value>
@@ -378,7 +378,7 @@
     <value>giữ màn hình luôn bật khi nghe bài, tính năng này chỉ bật khi bạn đang nghe</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
-    <value>cập nhật ngày 13/02/2014</value>
+    <value>cập nhật ngày 24/02/2014</value>
   </data>
   <data name="OpeningTitle" xml:space="preserve">
     <value>đang mở...</value>
@@ -403,5 +403,17 @@
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>phiên bản này không hỗ trợ video, hãy mua phiên bản pro từ màn hình giới thiệu...</value>
+  </data>
+  <data name="ProLicenseCaption" xml:space="preserve">
+    <value>bạn muốn xem video?</value>
+  </data>
+  <data name="ProLicenseLeftButton" xml:space="preserve">
+    <value>mua bản pro</value>
+  </data>
+  <data name="ProLicenseRightButton" xml:space="preserve">
+    <value>hủy</value>
+  </data>
+  <data name="ProLicenseTitle" xml:space="preserve">
+    <value>phiên bản miễn phí không hỗ trợ xem video, bạn cần mua bản pro để xem video...</value>
   </data>
 </root>

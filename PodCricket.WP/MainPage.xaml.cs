@@ -254,11 +254,11 @@ namespace PodCricket.WP
 
             if (!result.HasError)
             {
-                ToastMessage.Show(message, AppResources.ApplicationTitle);
+                Messenger.ShowToast(message, AppResources.ApplicationTitle);
                 await Reload();
             }
             else
-                ToastMessage.Show(result.ErrorMessage());
+                Messenger.ShowToast(result.ErrorMessage());
         }
 
         #endregion
@@ -288,7 +288,7 @@ namespace PodCricket.WP
 
             if (!ConnectivityHelper.NetworkAvailable())
             {
-                ToastMessage.Show(AppResources.ErrNetworkNotAvailable);
+                Messenger.ShowToast(AppResources.ErrNetworkNotAvailable);
                 return;
             }
 
@@ -299,7 +299,7 @@ namespace PodCricket.WP
                 var result = await _podManager.SearchPod(txtSearch.Text);
                 if (result.HasError)
                 {
-                    ToastMessage.Show(result.ErrorMessage());
+                    Messenger.ShowToast(result.ErrorMessage());
                     return;
                 }
 
@@ -312,7 +312,7 @@ namespace PodCricket.WP
             }
             catch (Exception)
             {
-                ToastMessage.Show(AppResources.SearchingErrorTitle);
+                Messenger.ShowToast(AppResources.SearchingErrorTitle);
             }
             finally {
                 this.SetProgressIndicator(false);
@@ -427,10 +427,10 @@ namespace PodCricket.WP
 
             var queueResult = _podManager.QueueToPlay(monitor.Tag as PodCricket.ApplicationServices.Stream);
             if (queueResult.HasError)
-                ToastMessage.Show(queueResult.ErrorMessage());
+                Messenger.ShowToast(queueResult.ErrorMessage());
             else
             {
-                ToastMessage.Show(AppResources.AddedToPlayListTitle);
+                Messenger.ShowToast(AppResources.AddedToPlayListTitle);
                 BindPlayingList();
                 this.DataContext = _mainModel;
             }
@@ -733,19 +733,6 @@ namespace PodCricket.WP
 
             _currentPlayingStreamModel = streamModel;
             RefreshPlayPage();
-        }
-
-        //private void mediaPlaying_MediaOpened(object sender, RoutedEventArgs e)
-        //{
-        //    txtPlayingUri.Text = "Playing " + mediaPlaying.Source.ToString();
-        //}
-
-        private void PlayStreamInApp()
-        {
-            //if (_playingStreamModel == null) return;
-
-            //MediaHelper.GetMediaElement(mediaPlaying, _playingStreamModel);
-            //txtPlayingUri.Text = "Streamming " + mediaPlaying.Source.ToString();
         }
 
         private void CallPlayLauncher()
