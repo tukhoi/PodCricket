@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Globalization;
 using PodCricket.Utilities.Extensions;
+using PodCricket.WP.Resources;
 
 namespace PodCricket.WP
 {
@@ -21,11 +22,12 @@ namespace PodCricket.WP
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.SetProgressIndicator(true, AppResources.OpeningTitle);
             if (CultureInfo.CurrentUICulture.ToString().StartsWith("vi"))
                 content.Source = new Uri(@"Resources\help\help-vi.html", UriKind.Relative);
             else
                 content.Source = new Uri(@"Resources\help\help.html", UriKind.Relative);
-
+            this.SetProgressIndicator(false);
             base.OnNavigatedTo(e);
         }
 
