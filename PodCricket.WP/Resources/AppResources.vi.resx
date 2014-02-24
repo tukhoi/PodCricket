@@ -383,9 +383,6 @@
   <data name="UrlTitle" xml:space="preserve">
     <value>địa chỉ</value>
   </data>
-  <data name="RateThisAppTitle" xml:space="preserve">
-    <value>xếp hạng ứng dụng này...</value>
-  </data>
   <data name="String1" xml:space="preserve">
     <value />
   </data>
@@ -399,10 +396,10 @@
     <value>giúp đỡ</value>
   </data>
   <data name="BtnProTitle" xml:space="preserve">
-    <value>Mua bản pro</value>
+    <value>mua bản pro</value>
   </data>
   <data name="AbtVersionPro" xml:space="preserve">
-    <value>phiên bản pro 1.2</value>
+    <value>phiên bản PRO 1.2</value>
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>phiên bản này không hỗ trợ video, hãy mua phiên bản pro từ màn hình giới thiệu...</value>
@@ -418,5 +415,8 @@
   </data>
   <data name="ProLicenseTitle" xml:space="preserve">
     <value>phiên bản miễn phí không hỗ trợ xem video, bạn cần mua bản pro để xem video...</value>
+  </data>
+  <data name="RateThisAppTitle" xml:space="preserve">
+    <value>bình chọn...</value>
   </data>
 </root>

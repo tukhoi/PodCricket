@@ -396,10 +396,10 @@
     <value>help</value>
   </data>
   <data name="BtnProTitle" xml:space="preserve">
-    <value>Buy pro version</value>
+    <value>buy pro version</value>
   </data>
   <data name="AbtVersionPro" xml:space="preserve">
-    <value>pro version 1.2</value>
+    <value>PRO version 1.2</value>
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>this version doesn't support video, please purchase pro version from about screen...</value>

@@ -124,7 +124,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to pro version 1.2.
+        ///   Looks up a localized string similar to PRO version 1.2.
         /// </summary>
         public static string AbtVersionPro {
             get {
@@ -241,7 +241,7 @@ namespace PodCricket.WP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buy pro version.
+        ///   Looks up a localized string similar to buy pro version.
         /// </summary>
         public static string BtnProTitle {
             get {

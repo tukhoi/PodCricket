@@ -384,7 +384,7 @@
     <value>đang mở...</value>
   </data>
   <data name="RateThisAppTitle" xml:space="preserve">
-    <value>xếp hạng ứng dụng này...</value>
+    <value>bình chọn...</value>
   </data>
   <data name="ErrStreamHasNotDownloaded" xml:space="preserve">
     <value>bài này chưa được tải</value>
@@ -396,10 +396,10 @@
     <value>giúp đỡ</value>
   </data>
   <data name="BtnProTitle" xml:space="preserve">
-    <value>Mua bản pro</value>
+    <value>mua bản pro</value>
   </data>
   <data name="AbtVersionPro" xml:space="preserve">
-    <value>phiên bản pro 1.2</value>
+    <value>phiên bản PRO 1.2</value>
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>phiên bản này không hỗ trợ video, hãy mua phiên bản pro từ màn hình giới thiệu...</value>

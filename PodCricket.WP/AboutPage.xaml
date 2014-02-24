@@ -43,7 +43,7 @@
             </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="112"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
@@ -69,6 +69,7 @@
             
 
             <Image Source="/Resources/default-pod.png"
+                    Margin="12"
                    Grid.Row="0"
                    Grid.Column="0"
                    VerticalAlignment="Top"/>
