@@ -156,6 +156,7 @@ namespace PodCricket.ApplicationServices
 
             foreach (var pod in _podMap.Values)
             {
+                if (pod.StreamList == null) break;
                 stream = pod.StreamList.FirstOrDefault(s => s.Id.Equals(streamId));
                 if (stream != null) break;
             }
