@@ -156,8 +156,6 @@ namespace PodCricket.WP.ViewModels
             var podcastPath = StreamHelper.GetPodcastPath(DownloadUri);
             if (string.IsNullOrEmpty(podcastPath)) return null;
 
-            if (string.IsNullOrEmpty(podcastPath)) return null;
-
             return StorageHelper.GetFileStream(podcastPath);
         }
     }

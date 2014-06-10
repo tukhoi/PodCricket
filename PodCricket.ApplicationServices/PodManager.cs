@@ -144,7 +144,7 @@ namespace PodCricket.ApplicationServices
 
                 return new AppResult<bool>(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
