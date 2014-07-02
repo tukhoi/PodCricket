@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<analytics xmlns="http://googleanalyticssdk.codeplex.com/ns/easytracker">
+  <!--Replace placeholder ID with your tracking ID-->
+  <trackingId>UA-52219977-1</trackingId>
+  <!--Replace placeholder name with your app name. If you leave this empty your WMAppManifest.xml Title will be used-->
+  <appName>podcricket</appName>
+  <!--Replace placeholder version with your app version. If you leave this empty your WMAppManifest.xml version will be used-->
+  <appVersion>1.3.0.0</appVersion>
+</analytics>

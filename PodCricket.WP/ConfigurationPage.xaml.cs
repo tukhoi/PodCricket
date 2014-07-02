@@ -11,6 +11,7 @@ using PodCricket.ApplicationServices;
 using PodCricket.Utilities.Extensions;
 using System.Threading.Tasks;
 using PodCricket.WP.Resources;
+using PodCricket.WP.Helper;
 
 namespace PodCricket.WP
 {
@@ -109,5 +110,10 @@ namespace PodCricket.WP
         }
 
         #endregion
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GA.LogPage(this.ToString());
+        }
     }
 }

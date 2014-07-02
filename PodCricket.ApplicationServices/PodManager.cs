@@ -153,6 +153,7 @@ namespace PodCricket.ApplicationServices
         public AppResult<Stream> FindStream(string streamId)
         {
             Stream stream = null;
+            if (string.IsNullOrEmpty(streamId)) return new AppResult<Stream>(ErrorCode.CouldNotFindStream);
 
             foreach (var pod in _podMap.Values)
             {

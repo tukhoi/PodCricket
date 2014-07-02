@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using System.Globalization;
 using PodCricket.Utilities.Extensions;
 using PodCricket.WP.Resources;
+using PodCricket.WP.Helper;
 
 namespace PodCricket.WP
 {
@@ -38,6 +39,11 @@ namespace PodCricket.WP
                 if (e.HorizontalVelocity > 0)
                     this.BackToPreviousPage();
             }
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GA.LogPage(this.ToString());
         }
     }
 }

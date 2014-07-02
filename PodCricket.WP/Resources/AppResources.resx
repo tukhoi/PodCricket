@@ -249,7 +249,7 @@
     <value>takes the shortest way to your favourite podcasts</value>
   </data>
   <data name="AbtVersion" xml:space="preserve">
-    <value>version 1.2</value>
+    <value>version 1.3</value>
   </data>
   <data name="ConfAutoBackup" xml:space="preserve">
     <value>auto backup</value>
@@ -378,7 +378,7 @@
     <value>prevent screen turned off while playing post, this feature just turned on while you are listening</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
-    <value>updated on Feb 24 2014</value>
+    <value>updated on Jun 24 2014</value>
   </data>
   <data name="OpeningTitle" xml:space="preserve">
     <value>loading...</value>
@@ -399,7 +399,7 @@
     <value>buy pro version</value>
   </data>
   <data name="AbtVersionPro" xml:space="preserve">
-    <value>PRO version 1.2</value>
+    <value>PRO version 1.3</value>
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>this version doesn't support video, please purchase pro version from about screen...</value>

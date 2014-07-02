@@ -13,6 +13,7 @@ using PodCricket.ApplicationServices;
 using Microsoft.Phone.Tasks;
 using PodCricket.WP.Helper;
 using PodCricket.WP.Resources;
+using PodCricket.Utilities.AppLicense;
 
 namespace PodCricket.WP
 {
@@ -27,6 +28,10 @@ namespace PodCricket.WP
             InitializeComponent();
             
             _podManager = PodManager.Instance();
+            if (LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+                adControl.Visibility = System.Windows.Visibility.Collapsed;
+            else
+                adControl.Visibility = System.Windows.Visibility.Visible;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -204,6 +209,11 @@ namespace PodCricket.WP
 
             ApplicationBar.Buttons.Add(downloadButton);
             ApplicationBar.Buttons.Add(playButton);
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GA.LogPage(this.ToString());
         }
     }
 }

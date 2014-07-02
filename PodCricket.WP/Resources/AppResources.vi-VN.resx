@@ -249,7 +249,7 @@
     <value>luyện nghe tiếng Anh, mọi lúc, mọi nơi</value>
   </data>
   <data name="AbtVersion" xml:space="preserve">
-    <value>phiên bản 1.2</value>
+    <value>phiên bản 1.3</value>
   </data>
   <data name="ConfAutoBackup" xml:space="preserve">
     <value>tự động sao lưu</value>
@@ -378,7 +378,7 @@
     <value>giữ màn hình luôn bật khi nghe bài, tính năng này chỉ bật khi bạn đang nghe</value>
   </data>
   <data name="AbtUpdateDate" xml:space="preserve">
-    <value>cập nhật ngày 24/02/2014</value>
+    <value>cập nhật ngày 24/06/2014</value>
   </data>
   <data name="OpeningTitle" xml:space="preserve">
     <value>đang mở...</value>
@@ -399,7 +399,7 @@
     <value>mua bản pro</value>
   </data>
   <data name="AbtVersionPro" xml:space="preserve">
-    <value>phiên bản PRO 1.2</value>
+    <value>phiên bản PRO 1.3</value>
   </data>
   <data name="ErrLicenseRequiredForVideo" xml:space="preserve">
     <value>phiên bản này không hỗ trợ video, hãy mua phiên bản pro từ màn hình giới thiệu...</value>

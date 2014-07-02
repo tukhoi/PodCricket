@@ -19,6 +19,7 @@ using Store = MockIAPLib;
 #else
 using Windows.ApplicationModel.Store;
 using Store = Windows.ApplicationModel.Store;
+using PodCricket.WP.Helper;
 #endif
 
 namespace PodCricket.WP
@@ -127,9 +128,8 @@ namespace PodCricket.WP
         // Code to execute on Unhandled Exceptions
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
-            //What should I do here???
-            //Task.Run(() => PodManager.Instance().SavePodMapAsync());
             PodManager.Instance().SavePodMap();
+            GA.LogException(e.ExceptionObject);
 
             if (Debugger.IsAttached)
             {

@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Threading;
 using System.Windows.Threading;
 using PodCricket.WP.Resources;
+using PodCricket.Utilities.AppLicense;
 
 namespace PodCricket.WP
 {
@@ -42,6 +43,11 @@ namespace PodCricket.WP
             _mainModel = new MainPageModel();
             _podManager = PodManager.Instance();
             _currentPlayingStreamModel = null;
+
+            if (LicenseHelper.Purchased(AppConfig.PRO_VERSION))
+                adControl.Visibility = System.Windows.Visibility.Collapsed;
+            else
+                adControl.Visibility = System.Windows.Visibility.Visible;
         }
 
         #region Override
@@ -62,6 +68,11 @@ namespace PodCricket.WP
             mediaElement.Stop();
 
             base.OnNavigatedFrom(e);
+        }
+
+        private void PivotPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GA.LogPage(this.ToString());
         }
 
         private void LoadCurrentPlaying()
@@ -310,9 +321,10 @@ namespace PodCricket.WP
 
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Messenger.ShowToast(AppResources.SearchingErrorTitle);
+                GA.LogException(ex);
             }
             finally {
                 this.SetProgressIndicator(false);

@@ -7,13 +7,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:cxi="clr-namespace:PodCricket.Utilities.Helpers;assembly=PodCricket.Utilities"
+    xmlns:adduplex="clr-namespace:AdDuplex;assembly=AdDuplex.WindowsPhone"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    Loaded="PhoneApplicationPage_Loaded">
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Default">
@@ -50,10 +52,14 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Margin="0" Grid.Row="0" x:Name="txtName" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" Height="Auto"/>
-
+                <adduplex:AdControl Grid.Row="0"
+                    x:Name="adControl"
+                    Margin="0"
+                    AppId="107267"/>
+                
+                <TextBlock Margin="0,0,0,12" Grid.Row="1" x:Name="txtName" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap" Height="Auto"/>
                 <phone:WebBrowser Grid.Row="2" Margin="0" cxi:WebBrowserHelper.Html="{Binding Summary}"/>
-                <TextBlock Grid.Row="3" Text="{Binding PublishDate}" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"/>
+                <TextBlock Margin="0, 12, 0, 0" Grid.Row="3" Text="{Binding PublishDate}" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"/>
             </Grid>
         </Grid>
     </Grid>

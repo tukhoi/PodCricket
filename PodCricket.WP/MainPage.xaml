@@ -7,6 +7,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:adduplex="clr-namespace:AdDuplex;assembly=AdDuplex.WindowsPhone"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -14,7 +15,8 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:myToolkit="clr-namespace:PodCricket.Utilities.Toolkit;assembly=PodCricket.Utilities">
+    xmlns:myToolkit="clr-namespace:PodCricket.Utilities.Toolkit;assembly=PodCricket.Utilities"
+    Loaded="PivotPage_Loaded">
     
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Panorama Control-->
@@ -197,7 +199,7 @@
                             
                             <TextBlock Height="Auto" Grid.Row="1" Grid.ColumnSpan="2" x:Name="txtPlayStatus" 
                                        Margin="0"
-                                       Style="{StaticResource PhoneTextSmallStyle}" 
+                                       Style="{StaticResource PhoneTextNormalStyle}" 
                                        VerticalAlignment="Center"
                                        TextWrapping="Wrap"
                                        Text="{Binding Path=LocalizedResources.MainPagePlayStatus, Source={StaticResource LocalizedStrings}}" 
@@ -257,6 +259,10 @@
                     
                     <ScrollViewer Grid.Row="1">
                         <StackPanel>
+                            <adduplex:AdControl Grid.Row="0"
+                                x:Name="adControl"
+                                Margin="12, 12, 0, 12"
+                                AppId="107267"/>
                             <phone:LongListSelector
                                 x:Name="llsPlayList"
                                 Grid.Row="3"
@@ -265,8 +271,14 @@
                                 ItemsSource="{Binding PlayingList}">
                                 <phone:LongListSelector.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BorderThickness="0,0,12,0" Background="{Binding BackgroundColor}">
-                                            <TextBlock x:Name="txtStreamToPlay" Grid.Row="0" Text="{Binding Title}"
+                                        <Grid Background="{Binding BackgroundColor}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="10"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0"
+                                                x:Name="txtStreamToPlay" Text="{Binding Title}"
                                                 Style="{StaticResource PhoneTextNormalStyle}"
                                                 TextWrapping="Wrap" Tap="txtStreamToPlay_Tap"/>
 
@@ -275,8 +287,7 @@
                                                     <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ToolkitRemove, Source={StaticResource LocalizedStrings}}" Click="ctxRemove_Click"/>
                                                 </toolkit:ContextMenu>
                                             </toolkit:ContextMenuService.ContextMenu>
-
-                                        </Border>
+                                        </Grid>
                                     </DataTemplate>
                                 </phone:LongListSelector.ItemTemplate>
                             </phone:LongListSelector>

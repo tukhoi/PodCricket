@@ -20,6 +20,7 @@ using PodCricket.WP.Helper;
 #else
 using Windows.ApplicationModel.Store;
 using Store = Windows.ApplicationModel.Store;
+using PodCricket.WP.Helper;
 #endif
 
 namespace PodCricket.WP
@@ -92,6 +93,11 @@ namespace PodCricket.WP
                 if (e.HorizontalVelocity > 0)
                     this.BackToPreviousPage();
             }
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GA.LogPage(this.ToString());
         }
     }
 }

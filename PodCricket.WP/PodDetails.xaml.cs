@@ -249,5 +249,10 @@ namespace PodCricket.WP
             ApplicationBar.Buttons.Add(refreshButton);
             ApplicationBar.Buttons.Add(subscribeButton);
         }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GA.LogPage(this.ToString());
+        }
     }
 }
