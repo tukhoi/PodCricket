@@ -189,13 +189,13 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <MediaElement Name="mediaElement" 
+                            <!--<MediaElement Name="mediaElement" 
                                           Grid.Row="0"
                                           Grid.ColumnSpan="2"
                                           Width="Auto"
                                           Height="Auto"
                                           BufferingTime="0:0:10" 
-                                          AutoPlay="True"/>
+                                          AutoPlay="True"/>-->
                             
                             <TextBlock Height="Auto" Grid.Row="1" Grid.ColumnSpan="2" x:Name="txtPlayStatus" 
                                        Margin="0"

@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Tasks;
+﻿using Microsoft.Phone.BackgroundAudio;
+using Microsoft.Phone.Tasks;
 using PodCricket.WP.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,23 @@ namespace PodCricket.WP.Helper
             {
                 mediaElement.Source = streamModel.DownloadUri;
                 
+            }
+        }
+
+        public static void BindSourceUri(BackgroundAudioPlayer mediaElement, StreamModel streamModel)
+        {
+            if (streamModel.DownloadState == ApplicationServices.DownloadState.Downloaded)
+            {
+                var localPlayStream = streamModel.GetLocalPlayStream();
+                if (localPlayStream != null)
+                    mediaElement.Track = new AudioTrack(streamModel.GetLocalPlayUri(), streamModel.Title, 
+                        streamModel.Authors, "", null);
+            }
+            else
+            {
+                mediaElement.Track = new AudioTrack(streamModel.DownloadUri, streamModel.Title,
+                        streamModel.Authors, "", null);
+
             }
         }
 

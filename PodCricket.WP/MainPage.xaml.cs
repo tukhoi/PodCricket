@@ -24,6 +24,7 @@ using System.Threading;
 using System.Windows.Threading;
 using PodCricket.WP.Resources;
 using PodCricket.Utilities.AppLicense;
+using Microsoft.Phone.BackgroundAudio;
 
 namespace PodCricket.WP
 {
@@ -35,6 +36,7 @@ namespace PodCricket.WP
 
         DispatcherTimer _currentPlayingStreamPositionTimer = new DispatcherTimer();
         double _currentTrackLastKnownPosition = 0.0;
+        BackgroundAudioPlayer _mediaElement = BackgroundAudioPlayer.Instance;
 
         public MainPage()
         {
@@ -65,7 +67,8 @@ namespace PodCricket.WP
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             SaveCurrentPlaying();
-            mediaElement.Stop();
+            //mediaElement.Stop();
+            _mediaElement.Stop();
 
             base.OnNavigatedFrom(e);
         }
@@ -102,7 +105,8 @@ namespace PodCricket.WP
             if (_currentPlayingStreamModel != null)
             {
                 currentStream = _currentPlayingStreamModel.Id;
-                currentStreamPosition = mediaElement.Position.TotalMinutes.ToString();
+                //currentStreamPosition = mediaElement.Position.TotalMinutes.ToString();
+                currentStreamPosition = _mediaElement.Position.TotalSeconds.ToString();
             }
 
             var currentPlaying = new KeyValuePair<string, string>(currentStream, currentStreamPosition);
@@ -533,8 +537,10 @@ namespace PodCricket.WP
         {
             sldPlaying.Value = 0;
             songTime.Text = "0";
-            mediaElement.Stop();
-            mediaElement.Source = null;
+            //mediaElement.Stop();
+            //mediaElement.Source = null;
+            _mediaElement.Stop();
+            _mediaElement.Track = null;
 
             if (_currentPlayingStreamModel == null)
             {
@@ -588,18 +594,31 @@ namespace PodCricket.WP
         {
             if (_currentPlayingStreamModel == null) return;
 
-            mediaElement.MediaOpened += new RoutedEventHandler(mediaElement_MediaOpened);
-            mediaElement.MediaEnded += new RoutedEventHandler(mediaElement_MediaEnded);
-            mediaElement.CurrentStateChanged += new RoutedEventHandler(mediaElement_CurrentStateChanged);
+            //mediaElement.MediaOpened += new RoutedEventHandler(mediaElement_MediaOpened);
+            //mediaElement.MediaEnded += new RoutedEventHandler(mediaElement_MediaEnded);
+            //mediaElement.CurrentStateChanged += new RoutedEventHandler(mediaElement_CurrentStateChanged);
+
+            _mediaElement.PlayStateChanged += _mediaElement_PlayStateChanged;
             _currentPlayingStreamPositionTimer.Tick += new EventHandler(currentPositionTimer_Tick);
 
-            MediaHelper.BindSourceUri(mediaElement, _currentPlayingStreamModel);
+            //MediaHelper.BindSourceUri(mediaElement, _currentPlayingStreamModel);
+            MediaHelper.BindSourceUri(_mediaElement, _currentPlayingStreamModel);
         }
 
-        void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
+        void _mediaElement_PlayStateChanged(object sender, EventArgs e)
         {
-            if (mediaElement.CurrentState == MediaElementState.Buffering
-                || mediaElement.CurrentState == MediaElementState.Opening)
+            if (_mediaElement.PlayerState == PlayState.TrackReady)
+            {
+                sldPlaying.Maximum = _mediaElement.Track.Duration.TotalMilliseconds;
+                _mediaElement.Play();
+            }
+
+            if (_mediaElement.PlayerState == PlayState.TrackEnded)
+            {
+                _mediaElement.Stop();
+            }
+
+            if (_mediaElement.PlayerState == PlayState.BufferingStarted)
             {
                 _currentPlayingStreamPositionTimer.Stop();
                 this.SetProgressIndicator(true, AppResources.StreammingTitle);
@@ -608,7 +627,7 @@ namespace PodCricket.WP
             else
                 this.SetProgressIndicator(false);
 
-            if (mediaElement.CurrentState == MediaElementState.Playing)
+            if (_mediaElement.PlayerState == PlayState.Playing)
             {
                 if (AppConfig.Instance().KeepScreenOn)
                     PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
@@ -639,13 +658,13 @@ namespace PodCricket.WP
 
                 _currentTrackLastKnownPosition = LoadCurrentLastKnownPostionOfCurrentStream();
                 if (_currentTrackLastKnownPosition > 0)
-                    mediaElement.Position = TimeSpan.FromMinutes(_currentTrackLastKnownPosition);
+                    _mediaElement.Position = TimeSpan.FromMinutes(_currentTrackLastKnownPosition);
             }
             else
             {
                 PhoneApplicationService.Current.UserIdleDetectionMode = App._originalIdleDectectionMode;   
 
-                if (mediaElement.CurrentState == MediaElementState.Paused)
+                if (_mediaElement.PlayerState == PlayState.Paused)
                 {
                     _currentPlayingStreamPositionTimer.Stop();
 
@@ -680,19 +699,22 @@ namespace PodCricket.WP
 
         void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            mediaElement.Stop();
+            _mediaElement.Stop();
         }
 
         void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
         {
-            sldPlaying.Maximum = mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
-            mediaElement.Play();
+            //sldPlaying.Maximum = _mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
+            sldPlaying.Maximum = _mediaElement.Track.Duration.TotalMilliseconds;
+            _mediaElement.Play();
         }
 
         void currentPositionTimer_Tick(object sender, EventArgs e)
         {
-            sldPlaying.Value = mediaElement.Position.TotalMilliseconds;
-            songTime.Text = "-" + FormatTime((int)mediaElement.NaturalDuration.TimeSpan.TotalSeconds - (int)mediaElement.Position.TotalSeconds);
+            //sldPlaying.Value = mediaElement.Position.TotalMilliseconds;
+            sldPlaying.Value = _mediaElement.Position.TotalMilliseconds;
+            //songTime.Text = "-" + FormatTime((int)mediaElement.NaturalDuration.TimeSpan.TotalSeconds - (int)mediaElement.Position.TotalSeconds);
+            songTime.Text = "-" + FormatTime((int)_mediaElement.Track.Duration.TotalSeconds - (int)_mediaElement.Position.TotalSeconds);
             // (int)mediaElement.Position.TotalSeconds - (int)mediaElement.Position.TotalSeconds + "";
         }
 
@@ -703,8 +725,8 @@ namespace PodCricket.WP
 
         private void sldPlaying_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
         {
-            mediaElement.Position = TimeSpan.FromMilliseconds(sldPlaying.Value);
-            _currentTrackLastKnownPosition = mediaElement.Position.TotalMinutes;
+            _mediaElement.Position = TimeSpan.FromMilliseconds(sldPlaying.Value);
+            _currentTrackLastKnownPosition = _mediaElement.Position.TotalMinutes;
             _currentPlayingStreamPositionTimer.Start();
         }
 
@@ -721,9 +743,9 @@ namespace PodCricket.WP
         {
             if (AppConfig.Instance().PlayStreamInApp)
             {
-                if (mediaElement.Source == null)
+                if (_mediaElement.Track == null)
                     LoadPlayingStream();
-                mediaElement.Play();
+                _mediaElement.Play();
             }
             else
                 if (_currentPlayingStreamModel != null)
@@ -732,8 +754,8 @@ namespace PodCricket.WP
 
         private void pause_btn_Click(object sender, RoutedEventArgs e)
         {
-            _currentTrackLastKnownPosition = mediaElement.Position.TotalMinutes;
-            mediaElement.Pause();
+            _currentTrackLastKnownPosition = _mediaElement.Position.TotalMinutes;
+            _mediaElement.Pause();
         }
 
         private void txtStreamToPlay_Tap(object sender, System.Windows.Input.GestureEventArgs e)
